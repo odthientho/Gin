@@ -222,4 +222,22 @@ struct ProgressStoreTests {
         #expect(reloaded.flashcardIndex(for: "animals") == 0)
         #expect(reloaded.earnedStickerIDs == ["cow"])
     }
+
+    @Test("Mastery accumulates, persists, and never doubles")
+    func masteryPersists() {
+        let url = FileManager.default.temporaryDirectory
+            .appendingPathComponent("gin-test-\(UUID().uuidString).json")
+
+        let store = ProgressStore(fileURL: url)
+        #expect(store.mastered(in: "flags").isEmpty)
+
+        store.recordMastered("france", in: "flags")
+        store.recordMastered("spain", in: "flags")
+        store.recordMastered("france", in: "flags")
+        #expect(store.mastered(in: "flags") == ["france", "spain"])
+        #expect(store.mastered(in: "animals").isEmpty)
+
+        let reloaded = ProgressStore(fileURL: url)
+        #expect(reloaded.mastered(in: "flags") == ["france", "spain"])
+    }
 }

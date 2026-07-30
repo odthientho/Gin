@@ -322,6 +322,107 @@ struct FlagContentTests {
         }
     }
 
+    @Test("Every mechanic runs the same ten-turn round")
+    func roundsAreTenTurns() {
+        #expect(RoundBuilder.roundLength == 10)
+        // One number, not six drifting ones — a round means the same amount of
+        // effort whichever game the child is in.
+        #expect(RoundBuilder.questionsPerRound == 10)
+        #expect(RoundBuilder.countingTasksPerRound == 10)
+        #expect(RoundBuilder.dropInTasksPerRound == 10)
+        #expect(RoundBuilder.mathProblemsPerRound == 10)
+        #expect(RoundBuilder.patternsPerRound == 10)
+        #expect(RoundBuilder.matchPairsPerRound == 10)
+    }
+
+    /// A round handing off to the next game only works if the pack has somewhere
+    /// to hand off to. Two packs deliberately do not and simply carry on, which
+    /// is the correct behaviour rather than an oversight — but a *new* pack
+    /// shipping with a single game is almost certainly an accident, so it fails.
+    @Test("Every pack either rotates games or is a known single-game pack")
+    func packsCanRotateOrAreKnownSingletons() throws {
+        let implemented: Set<Mechanic> = [
+            .discover, .findIt, .match, .dropIn, .count, .hearIt,
+            .addTakeAway, .pattern, .trace, .flashcard
+        ]
+        // Writing is one long tracing deck; Patterns is a single sequencing game.
+        let knownSingletons: Set<String> = ["writing", "patterns"]
+
+        for pack in try ContentLoader.loadAll(from: .main) {
+            // Flashcards are study, not a game, so they cannot be the handoff.
+            let games = pack.mechanics.filter { implemented.contains($0) && $0 != .flashcard }
+            guard !games.isEmpty else { continue }
+
+            if knownSingletons.contains(pack.id) {
+                #expect(games.count == 1, "\(pack.id) gained a game; drop it from the exempt list")
+            } else {
+                #expect(games.count > 1, "\(pack.id) has nowhere to hand off to")
+            }
+        }
+    }
+
+    @Test("Flags is learned 25 countries at a time")
+    func learningGroupsAreApplied() throws {
+        let pack = try ContentLoader.load("flags", from: .main)
+        let params = LevelParams.params(for: .big)
+        let groups = pack.learningGroups(for: params)
+
+        #expect(groups.count == 8)
+        #expect(groups.dropLast().allSatisfy { $0.count == 25 })
+        #expect(groups.last?.count == 20)
+
+        // Nothing mastered: the deck is the first 25, rank 1 through rank 25.
+        let firstGroup = pack.currentGroup(mastered: [], for: params)
+        #expect(firstGroup.count == 25)
+        #expect(firstGroup.first?.name == "France")
+        #expect(firstGroup.last?.name == "Switzerland")
+        #expect(pack.unlockedItems(mastered: [], for: params).count == 25)
+
+        // 24 of 25 proven: still repeating the first group.
+        let almost = Set(firstGroup.dropLast().map(\.id))
+        #expect(pack.currentGroup(mastered: almost, for: params).first?.name == "France")
+
+        // All 25 proven: the second group arrives and the window widens to 50.
+        let done = Set(firstGroup.map(\.id))
+        let secondGroup = pack.currentGroup(mastered: done, for: params)
+        #expect(secondGroup.first?.name == "Indonesia")
+        #expect(pack.unlockedItems(mastered: done, for: params).count == 50)
+
+        // Everything proven: the last group stays, nothing runs out.
+        let all = Set(pack.items.map(\.id))
+        #expect(pack.currentGroup(mastered: all, for: params).count == 20)
+        #expect(pack.unlockedItems(mastered: all, for: params).count == 195)
+
+        // A pack without a group size is one group, exactly as before.
+        let animals = try ContentLoader.load("animals", from: .main)
+        let littleParams = LevelParams.params(for: .little)
+        #expect(animals.learningGroups(for: littleParams).count == 1)
+        #expect(animals.currentGroup(mastered: [], for: littleParams).count
+                == animals.items(for: littleParams).count)
+    }
+
+    @Test("Questions aim at what still needs proving")
+    func preferredTargetsAreChosen() throws {
+        let pack = try ContentLoader.load("flags", from: .main)
+        let pool = pack.items(for: .params(for: .big))
+        let preferred: Set<Item.ID> = ["vietnam", "japan", "canada"]
+
+        for seed in UInt64(1) ... 60 {
+            var generator = SeededGenerator(seed: seed)
+            let question = try #require(RoundBuilder.findItQuestion(
+                from: pool, choiceCount: 4, preferring: preferred, using: &generator
+            ))
+            #expect(preferred.contains(question.target.id),
+                    "target \(question.target.id) ignored the preferred set")
+        }
+
+        // An empty preferred set changes nothing.
+        var generator = SeededGenerator(seed: 7)
+        #expect(RoundBuilder.findItQuestion(
+            from: pool, choiceCount: 4, preferring: [], using: &generator
+        ) != nil)
+    }
+
     @Test("The pool override keeps every country in rotation")
     func poolOverrideIsHonored() throws {
         let pack = try ContentLoader.load("flags", from: .main)

@@ -64,22 +64,23 @@ struct PatternTask: Equatable, Identifiable {
 /// invisible when they break and infuriating for a child.
 enum RoundBuilder {
 
-    /// Number of questions before a sticker is awarded. Short on purpose — a
-    /// two-year-old's attention is measured in tens of seconds, and the reward
-    /// has to arrive while they still remember starting.
-    static let questionsPerRound = 4
+    /// Turns in a round, for every mechanic.
+    ///
+    /// Deliberately one number rather than a per-mechanic tuning. A round used to
+    /// be three or four so the sticker arrived before a toddler's attention ran
+    /// out — but a round no longer *ends* play, it hands off to a different game.
+    /// Ten turns is long enough to settle into a game and short enough that the
+    /// next one arrives before it goes stale.
+    static let roundLength = 10
 
-    /// Counting takes longer per task than answering a question does, so a round
-    /// is shorter to land the reward in roughly the same amount of time.
-    static let countingTasksPerRound = 3
-
-    /// Dragging is slower and more effortful than tapping at this age.
-    static let dropInTasksPerRound = 3
-
-    /// Arithmetic is the most effortful thing in the app, so rounds are short.
-    static let mathProblemsPerRound = 3
-
-    static let patternsPerRound = 3
+    static let questionsPerRound = roundLength
+    static let countingTasksPerRound = roundLength
+    static let dropInTasksPerRound = roundLength
+    static let mathProblemsPerRound = roundLength
+    static let patternsPerRound = roundLength
+    /// Match counts *pairs*, not cleared boards, so a round is the same length
+    /// of effort as everywhere else regardless of how big a board happens to be.
+    static let matchPairsPerRound = roundLength
 
     /// The repeating motifs Patterns uses, easiest first. Expressed as token
     /// indices: `[0, 0, 1]` is AAB.
@@ -94,18 +95,27 @@ enum RoundBuilder {
         [0, 1, 2]      // ABC
     ]
 
+    /// - Parameter preferring: when non-empty, the target comes from these ids.
+    ///   Grouped packs pass the not-yet-mastered items of the current learning
+    ///   group, so questions concentrate on what still needs proving instead of
+    ///   re-asking flags the child already knows. Distractors still come from
+    ///   the whole pool.
     static func findItQuestion(
         from pool: [Item],
         choiceCount: Int,
         avoiding recentTargetID: Item.ID? = nil,
+        preferring preferredIDs: Set<Item.ID> = [],
         using generator: inout some RandomNumberGenerator
     ) -> FindItQuestion? {
         guard pool.count >= 2 else { return nil }
 
+        let preferred = pool.filter { preferredIDs.contains($0.id) }
+        let targetPool = preferred.isEmpty ? pool : preferred
+
         // Don't ask for the same thing twice running unless the pool is so small
         // there is no alternative.
-        let targetCandidates = pool.filter { $0.id != recentTargetID }
-        let searchSpace = targetCandidates.isEmpty ? pool : targetCandidates
+        let targetCandidates = targetPool.filter { $0.id != recentTargetID }
+        let searchSpace = targetCandidates.isEmpty ? targetPool : targetCandidates
         guard let target = searchSpace.randomElement(using: &generator) else { return nil }
 
         let distractors = pool

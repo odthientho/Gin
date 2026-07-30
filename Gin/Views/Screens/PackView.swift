@@ -114,7 +114,7 @@ struct PackView: View {
                     systemName: mechanic == .discover ? "play.fill" : "arrow.triangle.2.circlepath",
                     label: "Next game",
                     tint: pack.color.color,
-                    action: cycleMechanic
+                    action: { cycleMechanic() }
                 )
             }
 
@@ -149,17 +149,36 @@ struct PackView: View {
 
     // MARK: - Flow
 
-    private func cycleMechanic() {
-        guard let index = available.firstIndex(of: resolvedMechanic) else {
-            mechanic = available[0]
+    /// - Parameter skippingStudy: when true, flashcards are passed over.
+    ///   Flashcards are a study deck rather than a game, so a finished round
+    ///   should hand off to another *game* instead of dumping the child back
+    ///   into browsing. The play button passes false, so tapping through still
+    ///   reaches the deck deliberately.
+    private func cycleMechanic(skippingStudy: Bool = false) {
+        guard available.count > 1 else { return }
+
+        let start = available.firstIndex(of: resolvedMechanic) ?? -1
+        // Walk forward until something acceptable turns up. Bounded by the
+        // number of mechanics, so it terminates even if every one is skippable.
+        for step in 1 ... available.count {
+            let candidate = available[(start + step) % available.count]
+            if skippingStudy && candidate == .flashcard { continue }
+            mechanic = candidate
             return
         }
-        mechanic = available[(index + 1) % available.count]
     }
 
     private func award(_ item: Item) {
         let isNew = !progress.hasEarned(item.id)
         progress.award(item.id)
         reward = (item, isNew)
+
+        // A finished round hands off to a different game. Switching now, while
+        // the reward is still covering the screen, means the child looks up from
+        // the sticker into something new rather than watching the swap happen.
+        //
+        // Packs with a single mechanic (Writing) simply carry on — `cycleMechanic`
+        // is a no-op there, which is the right behaviour, not an oversight.
+        cycleMechanic(skippingStudy: true)
     }
 }

@@ -29,6 +29,9 @@ private struct ProgressSnapshot: Codable {
     /// when the property has a default, so a required new field would make every
     /// pre-upgrade progress file "corrupt" and silently wipe a child's stickers.
     var flashcardIndices: [String: Int]?
+    /// Same Codable caution. Pack id → items proven in a quiz, which is what
+    /// advances a grouped pack to its next learning group.
+    var masteredIDs: [String: [String]]?
 }
 
 /// Everything the app remembers between launches.
@@ -51,6 +54,11 @@ final class ProgressStore {
 
     /// Per-pack flashcard positions, keyed by pack id.
     private(set) var flashcardIndices: [String: Int] = [:]
+
+    /// Per-pack ids the child has answered correctly in a quiz. This is what
+    /// "learning the first 25" means operationally: the next group of a grouped
+    /// pack unlocks when the current group is covered here.
+    private(set) var masteredIDs: [String: Set<String>] = [:]
 
     private let fileURL: URL?
 
@@ -106,6 +114,18 @@ final class ProgressStore {
         save()
     }
 
+    func mastered(in packID: String) -> Set<String> {
+        masteredIDs[packID] ?? []
+    }
+
+    /// Records a correct quiz answer. Mastery only accumulates — a later wrong
+    /// tap never takes it back, because nothing in Gin is ever lost.
+    func recordMastered(_ itemID: String, in packID: String) {
+        guard !mastered(in: packID).contains(itemID) else { return }
+        masteredIDs[packID, default: []].insert(itemID)
+        save()
+    }
+
     /// Used by the parent zone in Phase 5.
     func resetAll() {
         earnedStickerIDs = []
@@ -136,6 +156,7 @@ final class ProgressStore {
         placements = snapshot.placements
         writingIndex = snapshot.writingIndex
         flashcardIndices = snapshot.flashcardIndices ?? [:]
+        masteredIDs = (snapshot.masteredIDs ?? [:]).mapValues(Set.init)
     }
 
     private func save() {
@@ -144,7 +165,8 @@ final class ProgressStore {
             earnedStickerIDs: earnedStickerIDs,
             placements: placements,
             writingIndex: writingIndex,
-            flashcardIndices: flashcardIndices
+            flashcardIndices: flashcardIndices,
+            masteredIDs: masteredIDs.mapValues { Array($0).sorted() }
         )
         guard let data = try? JSONEncoder().encode(snapshot) else { return }
         try? data.write(to: fileURL, options: .atomic)

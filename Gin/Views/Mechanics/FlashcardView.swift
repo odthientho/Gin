@@ -29,11 +29,18 @@ struct FlashcardView: View {
     /// been superseded by an impatient tap.
     @State private var generation = 0
 
-    private var items: [Item] { pack.items(for: params) }
+    /// The deck is the *current learning group* — for Flags, 25 countries — not
+    /// the whole pack. It repeats within the group; the next group joins only
+    /// after this one has been proven in the quiz. Learn 25, then the next 25.
+    private var items: [Item] {
+        pack.currentGroup(mastered: progress.mastered(in: pack.id), for: params)
+    }
 
     private var index: Int {
         let stored = progress.flashcardIndex(for: pack.id)
-        return items.indices.contains(stored) ? stored : 0
+        // Wrap rather than clamp, so a stored position stays sane when the
+        // group changes size or a new group replaces the old one.
+        return items.isEmpty ? 0 : stored % items.count
     }
 
     private var item: Item? { items.indices.contains(index) ? items[index] : nil }
@@ -80,8 +87,16 @@ struct FlashcardView: View {
 
     private func front(_ item: Item) -> some View {
         cardSurface(fill: Theme.Palette.surface) {
-            // The point of the exercise: the picture as big as the card allows.
-            ItemArtView(item: item, size: 450)
+            // The point of the exercise: the picture as big as the card allows —
+            // measured from the card rather than hard-coded, so it stays inside
+            // its bounds on a mini and still fills a 13-inch.
+            GeometryReader { geometry in
+                ItemArtView(
+                    item: item,
+                    size: min(geometry.size.height * 0.78, geometry.size.width * 0.62)
+                )
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
         }
     }
 

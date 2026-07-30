@@ -10,6 +10,7 @@
     "match"
   ],
   "poolSize": 195,
+  "groupSize": 25,
   "visualPrompt": true,
   "items": [
     {

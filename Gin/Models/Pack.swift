@@ -140,6 +140,12 @@ struct Pack: Codable, Sendable, Hashable, Identifiable {
     /// (a two-year-old meets six animals, not sixteen); Flags is the one pack
     /// whose entire point is breadth, so it keeps all 195 countries in rotation.
     var poolSize: Int?
+    /// Splits the pack into learning groups of this many items, unlocked in
+    /// order. Flags uses 25: a child studies the 25 most familiar flags on
+    /// repeat, and the next 25 arrive only once each of the current group has
+    /// been answered correctly in a quiz. Absent on packs small enough to learn
+    /// whole.
+    var groupSize: Int?
     /// Declares that this pack's questions can be posed the other way round —
     /// showing the picture and asking for the name. Data-driven because nothing
     /// structural distinguishes a flag item any more; an emoji flag looks like
@@ -159,5 +165,41 @@ struct Pack: Codable, Sendable, Hashable, Identifiable {
     /// The subset of items in play at a given level.
     func items(for params: LevelParams) -> [Item] {
         Array(items.prefix(poolSize ?? params.itemPoolSize))
+    }
+
+    // MARK: - Learning groups
+
+    /// The pool divided into groups of ``groupSize``, in pack order. A pack
+    /// without a group size is one group: learn it whole.
+    func learningGroups(for params: LevelParams) -> [[Item]] {
+        let pool = items(for: params)
+        guard let groupSize, groupSize > 0, groupSize < pool.count else { return [pool] }
+        return stride(from: 0, to: pool.count, by: groupSize).map { start in
+            Array(pool[start ..< min(start + groupSize, pool.count)])
+        }
+    }
+
+    /// The group currently being learned: the first whose items are not all
+    /// mastered. A fully mastered pack stays on its last group rather than
+    /// running out of things to show.
+    func currentGroup(mastered: Set<Item.ID>, for params: LevelParams) -> [Item] {
+        let groups = learningGroups(for: params)
+        return groups.first { group in
+            group.contains { !mastered.contains($0.id) }
+        } ?? groups[groups.count - 1]
+    }
+
+    /// Every item the child has reached: all groups up to and including the
+    /// current one. Quizzes draw from this window, so earlier groups stay in
+    /// circulation instead of being learned and forgotten.
+    func unlockedItems(mastered: Set<Item.ID>, for params: LevelParams) -> [Item] {
+        let groups = learningGroups(for: params)
+        var unlocked: [Item] = []
+        for group in groups {
+            unlocked.append(contentsOf: group)
+            // Stop after the first incomplete group — that one is the frontier.
+            if group.contains(where: { !mastered.contains($0.id) }) { break }
+        }
+        return unlocked
     }
 }

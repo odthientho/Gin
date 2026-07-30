@@ -15,6 +15,7 @@ struct MatchView: View {
     let onRoundComplete: (Item) -> Void
 
     @Environment(AudioService.self) private var audio
+    @Environment(ProgressStore.self) private var progress
 
     private struct Card: Identifiable, Equatable {
         let id = UUID()
@@ -30,8 +31,14 @@ struct MatchView: View {
     @State private var shake: CGFloat = 0
     @State private var isPreviewing = true
     @State private var isResolving = false
+    /// Pairs found this round, across however many boards it takes.
+    @State private var pairsThisRound = 0
 
-    private var pool: [Item] { pack.items(for: params) }
+    /// Grouped packs deal only from the unlocked window, so the memory game
+    /// exercises the flags being learned rather than ambushing with locked ones.
+    private var pool: [Item] {
+        pack.unlockedItems(mastered: progress.mastered(in: pack.id), for: params)
+    }
 
     var body: some View {
         VStack(spacing: Theme.Metrics.minGap) {
@@ -178,12 +185,16 @@ struct MatchView: View {
             selected = []
             isResolving = false
 
+            pairsThisRound += 1
+            if pairsThisRound >= RoundBuilder.matchPairsPerRound {
+                pairsThisRound = 0
+                onRoundComplete(picked[0].item)
+            }
+
             guard matched.count == Set(cards.map(\.pairID)).count else { return }
             Task {
-                try? await Task.sleep(for: .milliseconds(900))
-                onRoundComplete(picked[0].item)
                 // Clearing the board deals a fresh one rather than stopping.
-                try? await Task.sleep(for: .milliseconds(500))
+                try? await Task.sleep(for: .milliseconds(900))
                 deal()
             }
         } else {

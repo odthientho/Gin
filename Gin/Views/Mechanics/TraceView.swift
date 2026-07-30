@@ -33,7 +33,7 @@ struct TraceView: View {
     @State private var hasCelebrated = false
     @State private var completedThisRound = 0
 
-    private static let glyphsPerRound = 3
+    private static let glyphsPerRound = RoundBuilder.roundLength
     private let evaluator = TraceEvaluator()
 
     /// Only the traceable items, in authored order: pre-strokes, letters, digits.

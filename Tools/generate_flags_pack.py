@@ -211,6 +211,10 @@ pack = {
     # Overrides the per-level pool cap. Flags is the one pack whose point is
     # breadth, so all 195 stay in rotation.
     "poolSize": 195,
+    # Learned 25 at a time, in ranking order: the flashcard deck repeats the
+    # current 25, and the next 25 unlock once each of these has been answered
+    # correctly in the quiz.
+    "groupSize": 25,
     # Enables the flag-first direction: show a flag, ask for the country.
     "visualPrompt": True,
     "items": items,

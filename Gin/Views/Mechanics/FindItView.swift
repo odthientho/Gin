@@ -29,6 +29,7 @@ struct FindItView: View {
     let onRoundComplete: (Item) -> Void
 
     @Environment(AudioService.self) private var audio
+    @Environment(ProgressStore.self) private var progress
 
     @State private var question: FindItQuestion?
     @State private var direction: PromptType = .audio
@@ -38,7 +39,22 @@ struct FindItView: View {
     @State private var shake: CGFloat = 0
     @State private var isAdvancing = false
 
-    private var pool: [Item] { pack.items(for: params) }
+    /// The learning window: everything up to and including the group being
+    /// learned. For ungrouped packs this is simply the level's pool.
+    private var pool: [Item] {
+        pack.unlockedItems(mastered: progress.mastered(in: pack.id), for: params)
+    }
+
+    /// What still needs proving in the current group — where questions aim, so
+    /// "keep repeating until they know all 25" converges instead of wandering.
+    private var stillLearning: Set<Item.ID> {
+        let mastered = progress.mastered(in: pack.id)
+        return Set(
+            pack.currentGroup(mastered: mastered, for: params)
+                .map(\.id)
+                .filter { !mastered.contains($0) }
+        )
+    }
 
     var body: some View {
         VStack(spacing: Theme.Metrics.minGap) {
@@ -107,18 +123,27 @@ struct FindItView: View {
 
     private func visualPrompt(_ question: FindItQuestion) -> some View {
         Button { askAgain() } label: {
-            VStack(spacing: 16) {
-                // Nearly the full height of the prompt card. The flag is the
-                // entire question; at a distance-readable size a child can see
-                // the stripes and emblems that distinguish it, which 150pt hid.
-                ItemArtView(item: question.target, size: 450)
-                HStack(spacing: 14) {
-                    Image(systemName: "speaker.wave.2.fill")
-                        .font(.system(size: 30, weight: .semibold))
-                    Text("Which one is this?")
-                        .font(Theme.TypeScale.label)
+            // Measured, not fixed. A hard size here once demanded more height
+            // than the screen had, which pushed the choice row and PackView's
+            // own header off the edge. The flag should be as large as the card
+            // can actually give it and not one point larger.
+            GeometryReader { geometry in
+                VStack(spacing: 16) {
+                    ItemArtView(
+                        item: question.target,
+                        size: min(geometry.size.height * 0.68, geometry.size.width * 0.55)
+                    )
+                    HStack(spacing: 14) {
+                        Image(systemName: "speaker.wave.2.fill")
+                            .font(.system(size: 30, weight: .semibold))
+                        Text("Which one is this?")
+                            .font(Theme.TypeScale.label)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.7)
+                    }
+                    .foregroundStyle(Theme.Palette.inkSoft)
                 }
-                .foregroundStyle(Theme.Palette.inkSoft)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(28)
@@ -193,6 +218,7 @@ struct FindItView: View {
             from: pool,
             choiceCount: params.choiceCount,
             avoiding: question?.target.id,
+            preferring: stillLearning,
             using: &generator
         )
 
@@ -225,6 +251,9 @@ struct FindItView: View {
             withAnimation(Motion.pop) { correctItemID = item.id }
             audio.speak(item)
 
+            // A correct answer is proof. Enough proof across the current group
+            // and the next 25 flags quietly join the rotation.
+            progress.recordMastered(item.id, in: pack.id)
             answeredCount += 1
             Task {
                 try? await Task.sleep(for: .milliseconds(1200))
