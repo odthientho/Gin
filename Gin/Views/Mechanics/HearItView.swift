@@ -119,9 +119,9 @@ struct HearItView: View {
                 if answered >= RoundBuilder.questionsPerRound {
                     answered = 0
                     onRoundComplete(question.target)
-                } else {
-                    nextQuestion()
                 }
+                // A sticker never ends play — the next question is always ready.
+                nextQuestion()
             }
         } else {
             Haptics.nudge()

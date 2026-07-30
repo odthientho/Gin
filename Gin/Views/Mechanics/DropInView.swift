@@ -201,9 +201,9 @@ struct DropInView: View {
             if completed >= RoundBuilder.dropInTasksPerRound {
                 completed = 0
                 onRoundComplete(item)
-            } else {
-                nextTask()
             }
+            // A sticker never ends play — the next shape is always ready.
+            nextTask()
         }
     }
 

@@ -5,11 +5,19 @@ import SwiftUI
 /// This is the *only* progression in Gin — no stars, no score, no levels
 /// completed. Collection motivates at this age; ranking does not, and ranking
 /// implies the possibility of doing badly, which this app does not have.
+///
+/// **It clears itself.** A reward that waits for a tap is a gate, and a gate is
+/// exactly what a child in the middle of playing does not need. It shows for a
+/// couple of seconds over a game that is already moving on underneath, and a tap
+/// anywhere skips it.
 struct RewardOverlay: View {
     let item: Item
     let color: Color
     let isNew: Bool
     let onDismiss: () -> Void
+
+    /// Long enough to see what was earned, short enough not to break the rhythm.
+    private let visibleFor = Duration.milliseconds(2400)
 
     @State private var hasAppeared = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -58,7 +66,13 @@ struct RewardOverlay: View {
                 .buttonStyle(.plain)
             }
         }
-        .onAppear { hasAppeared = true }
+        .task {
+            hasAppeared = true
+            try? await Task.sleep(for: visibleFor)
+            // Cancelled automatically if a tap dismissed it first.
+            guard !Task.isCancelled else { return }
+            onDismiss()
+        }
         .accessibilityAddTraits(.isModal)
     }
 

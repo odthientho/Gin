@@ -375,9 +375,9 @@ struct AddTakeAwayView: View {
                 if solved >= RoundBuilder.mathProblemsPerRound {
                     solved = 0
                     onRoundComplete(problem.item)
-                } else {
-                    nextProblem()
                 }
+                // A sticker never ends play — the next problem is always ready.
+                nextProblem()
             }
         } else {
             Haptics.nudge()

@@ -155,9 +155,9 @@ struct PatternsView: View {
                 if solved >= RoundBuilder.patternsPerRound {
                     solved = 0
                     onRoundComplete(task.answer)
-                } else {
-                    nextTask()
                 }
+                // A sticker never ends play — the next pattern is always ready.
+                nextTask()
             }
         } else {
             Haptics.nudge()

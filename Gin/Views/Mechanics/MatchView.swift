@@ -182,6 +182,9 @@ struct MatchView: View {
             Task {
                 try? await Task.sleep(for: .milliseconds(900))
                 onRoundComplete(picked[0].item)
+                // Clearing the board deals a fresh one rather than stopping.
+                try? await Task.sleep(for: .milliseconds(500))
+                deal()
             }
         } else {
             Haptics.nudge()

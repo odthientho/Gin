@@ -170,9 +170,9 @@ struct CountTapView: View {
             if completedTasks >= RoundBuilder.countingTasksPerRound {
                 completedTasks = 0
                 onRoundComplete(task.item)
-            } else {
-                nextTask()
             }
+            // A sticker never ends play — there is always another thing to count.
+            nextTask()
         }
     }
 }

@@ -228,9 +228,10 @@ struct FindItView: View {
                 if answeredCount >= RoundBuilder.questionsPerRound {
                     answeredCount = 0
                     onRoundComplete(question.target)
-                } else {
-                    nextQuestion()
                 }
+                // Always queue the next question. Earning a sticker celebrates
+                // progress; it must never be the thing that ends play.
+                nextQuestion()
             }
         } else {
             Haptics.nudge()
