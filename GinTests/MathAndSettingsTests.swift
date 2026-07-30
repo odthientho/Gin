@@ -271,6 +271,22 @@ struct FlagContentTests {
         #expect(Set(pack.items.map(\.id)).count == 195)
         // No Discover: a no-scroll grid cannot hold 195 tiles.
         #expect(!pack.mechanics.contains(.discover))
+        // Learning comes before testing: the deck is first, so it is what the
+        // pack opens into.
+        #expect(pack.mechanics.first == .flashcard)
+    }
+
+    @Test("The deck runs familiar flags first")
+    func rankingOrderIsApplied() throws {
+        let items = try ContentLoader.load("flags", from: .main).items
+        #expect(items[0].name == "France")
+        #expect(items[1].name == "Spain")
+        #expect(items[2].name == "United States")
+        // Spot-checks deeper in: rank 24 and rank 39 in the supplied list.
+        #expect(items[23].name == "Vietnam")
+        #expect(items[38].name == "Brazil")
+        // The unranked handful goes last, not lost.
+        #expect(items.count == 195)
     }
 
     @Test("Every flag is a valid, unique emoji flag")

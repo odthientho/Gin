@@ -15,6 +15,7 @@ enum Mechanic: String, Codable, Sendable, CaseIterable {
     case addTakeAway   // objects arrive or leave, then pick a numeral
     case pattern       // AB / AAB sequencing — what comes next
     case trace         // handwriting: follow the dashed glyph with a Pencil
+    case flashcard     // learn-first deck: big picture, tap to flip and hear it
 }
 
 /// How an item is drawn.

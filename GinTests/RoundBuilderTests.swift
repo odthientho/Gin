@@ -200,4 +200,26 @@ struct ProgressStoreTests {
         store.place("cow", at: StickerPlacement(x: 0.1, y: 0.1))
         #expect(store.unplacedStickerIDs == ["pig"])
     }
+
+    @Test("Flashcard positions persist per pack, and old files still decode")
+    func flashcardPositionPersists() throws {
+        let url = FileManager.default.temporaryDirectory
+            .appendingPathComponent("gin-test-\(UUID().uuidString).json")
+
+        // A progress file from before flashcards existed — no flashcardIndices
+        // key. It must load, not be treated as corrupt and wiped.
+        let legacy = #"{"earnedStickerIDs":["cow"],"placements":{},"writingIndex":3}"#
+        try legacy.data(using: .utf8)!.write(to: url)
+
+        let store = ProgressStore(fileURL: url)
+        #expect(store.earnedStickerIDs == ["cow"], "legacy file was wiped")
+        #expect(store.flashcardIndex(for: "flags") == 0)
+
+        store.setFlashcardIndex(23, for: "flags")
+
+        let reloaded = ProgressStore(fileURL: url)
+        #expect(reloaded.flashcardIndex(for: "flags") == 23)
+        #expect(reloaded.flashcardIndex(for: "animals") == 0)
+        #expect(reloaded.earnedStickerIDs == ["cow"])
+    }
 }

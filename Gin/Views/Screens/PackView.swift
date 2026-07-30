@@ -21,7 +21,8 @@ struct PackView: View {
     /// built; listing them here is what keeps the play button from cycling into
     /// an empty screen.
     private static let implemented: [Mechanic] = [
-        .discover, .findIt, .match, .dropIn, .count, .hearIt, .addTakeAway, .pattern, .trace
+        .discover, .findIt, .match, .dropIn, .count, .hearIt, .addTakeAway, .pattern,
+        .trace, .flashcard
     ]
 
     private var available: [Mechanic] {
@@ -89,6 +90,8 @@ struct PackView: View {
             PatternsView(pack: pack, params: params, onRoundComplete: award)
         case .trace:
             TraceView(pack: pack, params: params, onRoundComplete: award)
+        case .flashcard:
+            FlashcardView(pack: pack, params: params)
         default:
             DiscoverView(pack: pack, params: params)
         }

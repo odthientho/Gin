@@ -25,6 +25,10 @@ private struct ProgressSnapshot: Codable {
     var earnedStickerIDs: [String] = []
     var placements: [String: StickerPlacement] = [:]
     var writingIndex: Int = 0
+    /// Optional deliberately: synthesized Codable *throws* on a missing key even
+    /// when the property has a default, so a required new field would make every
+    /// pre-upgrade progress file "corrupt" and silently wipe a child's stickers.
+    var flashcardIndices: [String: Int]?
 }
 
 /// Everything the app remembers between launches.
@@ -44,6 +48,9 @@ final class ProgressStore {
     /// Which glyph the child reached in the writing pack, so they resume
     /// there instead of re-tracing a vertical line every launch.
     private(set) var writingIndex: Int = 0
+
+    /// Per-pack flashcard positions, keyed by pack id.
+    private(set) var flashcardIndices: [String: Int] = [:]
 
     private let fileURL: URL?
 
@@ -87,6 +94,18 @@ final class ProgressStore {
         save()
     }
 
+    /// Where the flashcard deck for a pack is open to, so a returning child
+    /// continues from Croatia rather than starting over at France every launch.
+    func flashcardIndex(for packID: String) -> Int {
+        flashcardIndices[packID] ?? 0
+    }
+
+    func setFlashcardIndex(_ index: Int, for packID: String) {
+        guard index >= 0, flashcardIndices[packID] ?? 0 != index else { return }
+        flashcardIndices[packID] = index
+        save()
+    }
+
     /// Used by the parent zone in Phase 5.
     func resetAll() {
         earnedStickerIDs = []
@@ -116,6 +135,7 @@ final class ProgressStore {
         earnedStickerIDs = snapshot.earnedStickerIDs
         placements = snapshot.placements
         writingIndex = snapshot.writingIndex
+        flashcardIndices = snapshot.flashcardIndices ?? [:]
     }
 
     private func save() {
@@ -123,7 +143,8 @@ final class ProgressStore {
         let snapshot = ProgressSnapshot(
             earnedStickerIDs: earnedStickerIDs,
             placements: placements,
-            writingIndex: writingIndex
+            writingIndex: writingIndex,
+            flashcardIndices: flashcardIndices
         )
         guard let data = try? JSONEncoder().encode(snapshot) else { return }
         try? data.write(to: fileURL, options: .atomic)

@@ -108,7 +108,10 @@ struct FindItView: View {
     private func visualPrompt(_ question: FindItQuestion) -> some View {
         Button { askAgain() } label: {
             VStack(spacing: 16) {
-                ItemArtView(item: question.target, size: 150)
+                // Nearly the full height of the prompt card. The flag is the
+                // entire question; at a distance-readable size a child can see
+                // the stripes and emblems that distinguish it, which 150pt hid.
+                ItemArtView(item: question.target, size: 450)
                 HStack(spacing: 14) {
                     Image(systemName: "speaker.wave.2.fill")
                         .font(.system(size: 30, weight: .semibold))

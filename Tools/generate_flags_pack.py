@@ -96,6 +96,75 @@ COUNTRIES = [
 assert len(COUNTRIES) == 195, f"expected 195 countries, have {len(COUNTRIES)}"
 assert len({c for c, _ in COUNTRIES}) == 195, "duplicate ISO code"
 
+# ---------------------------------------------------------------------------
+# Presentation order
+#
+# A popularity ranking supplied by the user (2026-07-30): familiar, distinctive
+# flags first, so the flashcard deck starts with France rather than Afghanistan.
+# Names are theirs, mapped onto this pack's names where the two disagree.
+#
+# Deliberately absent from the ranking as applied:
+# - Kosovo: not in the 195-country source list, and no emoji flag exists for it
+#   (XK renders as floating letters, not a flag).
+# - The ranking's last four lines ("Palau (if not counted earlier...)" etc.) are
+#   duplicates of countries already ranked, and are dropped.
+# Countries in the pack but not in the ranking are appended at the end in
+# source order.
+# ---------------------------------------------------------------------------
+
+RANKING = [
+    "France", "Spain", "United States", "Italy", "Turkey", "Mexico", "Thailand",
+    "Germany", "United Kingdom", "Japan", "Australia", "Greece", "Austria",
+    "Portugal", "China", "Netherlands", "United Arab Emirates", "Malaysia",
+    "Canada", "South Korea", "Saudi Arabia", "Singapore", "Croatia", "Vietnam",
+    "Switzerland", "Indonesia", "Poland", "India", "Czechia", "Hungary",
+    "Belgium", "Ireland", "Egypt", "Morocco", "Denmark", "Sweden", "Norway",
+    "New Zealand", "Brazil", "Finland", "South Africa", "Iceland", "Sri Lanka",
+    "Philippines", "Dominican Republic", "Argentina", "Peru", "Jordan",
+    "Israel", "Qatar",
+    "Romania", "Bulgaria", "Chile", "Colombia", "Kenya", "Tanzania", "Nepal",
+    "Cambodia", "Laos", "Oman", "Malta", "Cyprus", "Luxembourg", "Slovenia",
+    "Slovakia", "Estonia", "Latvia", "Lithuania", "Albania", "Montenegro",
+    "Serbia", "Bosnia and Herzegovina", "North Macedonia", "Georgia", "Armenia",
+    "Azerbaijan", "Kazakhstan", "Uzbekistan", "Mongolia", "Fiji", "Mauritius",
+    "Seychelles", "Maldives", "Bahamas", "Jamaica", "Cuba", "Costa Rica",
+    "Panama", "Belize", "Ecuador", "Uruguay", "Bolivia", "Paraguay",
+    "Trinidad and Tobago", "Barbados", "Grenada", "Saint Lucia",
+    "Antigua and Barbuda", "Dominica", "Saint Vincent and the Grenadines",
+    "Rwanda", "Uganda", "Botswana", "Namibia", "Zambia", "Zimbabwe",
+    "Madagascar", "Tunisia", "Algeria", "Senegal", "Ghana", "Côte d'Ivoire",
+    "Benin", "Togo", "Cameroon", "Gabon", "Congo", "DR Congo", "Angola",
+    "Mozambique", "Malawi", "Lesotho", "Eswatini", "Burundi", "Ethiopia",
+    "Djibouti", "Eritrea", "Somalia", "Sudan", "South Sudan", "Mauritania",
+    "Mali", "Niger", "Burkina Faso", "Guinea", "Guinea-Bissau", "Sierra Leone",
+    "Liberia", "Gambia", "Cabo Verde", "Comoros", "Sao Tome and Principe",
+    "Timor-Leste", "Brunei", "Bhutan", "Bangladesh", "Pakistan", "Kyrgyzstan",
+    "Tajikistan", "Turkmenistan",
+    "Afghanistan", "Iraq", "Iran", "Lebanon", "Syria", "Yemen", "Kuwait",
+    "Bahrain", "Papua New Guinea", "Solomon Islands", "Vanuatu", "Samoa",
+    "Tonga", "Kiribati", "Tuvalu", "Nauru", "Palau", "Micronesia",
+    "Marshall Islands", "Central African Republic", "Chad", "Nigeria",
+    "Equatorial Guinea", "Libya", "Belarus", "Moldova", "Ukraine", "Russia",
+    "Liechtenstein", "Monaco", "San Marino", "Andorra", "Holy See", "Suriname",
+    "Guyana", "El Salvador", "Guatemala", "Honduras", "Nicaragua",
+    "Saint Kitts and Nevis",
+]
+
+assert len(RANKING) == len(set(RANKING)), "duplicate name in the ranking"
+known = {name for _, name in COUNTRIES}
+unknown = [name for name in RANKING if name not in known]
+assert not unknown, f"ranking names that match no country: {unknown}"
+
+rank = {name: position for position, name in enumerate(RANKING)}
+source_order = {pair: position for position, pair in enumerate(COUNTRIES)}
+COUNTRIES = sorted(
+    COUNTRIES,
+    key=lambda pair: rank.get(pair[1], len(RANKING) + source_order[pair]),
+)
+
+unranked = [name for _, name in COUNTRIES if name not in rank]
+print(f"Ranked {len(RANKING)}; appended unranked: {', '.join(unranked)}")
+
 
 def emoji_flag(iso: str) -> str:
     """Two regional-indicator characters; the platform renders them as the flag."""
@@ -134,10 +203,11 @@ pack = {
     "color": "teal",
     "icon": "🚩",
     "minLevel": 3,
-    # No Discover: a no-scroll grid cannot hold 195 tiles. The pack opens
-    # straight into Find It, which is the actual flags experience — see a flag
-    # and pick the country, or hear a country and pick the flag.
-    "mechanics": ["findIt", "match"],
+    # Learning comes before testing: the pack opens as a flashcard deck — a big
+    # flag, tap to flip it over and hear the country — and the play button
+    # cycles on to the quiz mechanics. Still no Discover: a no-scroll grid
+    # cannot hold 195 tiles, and the flashcards *are* its free-exploration role.
+    "mechanics": ["flashcard", "findIt", "match"],
     # Overrides the per-level pool cap. Flags is the one pack whose point is
     # breadth, so all 195 stay in rotation.
     "poolSize": 195,
