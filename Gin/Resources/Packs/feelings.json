@@ -1,0 +1,18 @@
+{
+  "id": "feelings",
+  "title": "Feelings",
+  "color": "berry",
+  "icon": "😊",
+  "minLevel": 2,
+  "mechanics": ["discover", "findIt", "match"],
+  "items": [
+    { "id": "happy",     "name": "Happy",     "art": { "kind": "emoji", "value": "😄" }, "voiceClip": "happy",     "tags": ["core"] },
+    { "id": "sad",       "name": "Sad",       "art": { "kind": "emoji", "value": "😢" }, "voiceClip": "sad",       "tags": ["core"] },
+    { "id": "angry",     "name": "Angry",     "art": { "kind": "emoji", "value": "😠" }, "voiceClip": "angry",     "tags": ["core"] },
+    { "id": "sleepy",    "name": "Sleepy",    "art": { "kind": "emoji", "value": "😴" }, "voiceClip": "sleepy",    "tags": ["core"] },
+    { "id": "scared",    "name": "Scared",    "art": { "kind": "emoji", "value": "😨" }, "voiceClip": "scared",    "tags": ["core"] },
+    { "id": "excited",   "name": "Excited",   "art": { "kind": "emoji", "value": "🤩" }, "voiceClip": "excited",   "tags": ["extended"] },
+    { "id": "calm",      "name": "Calm",      "art": { "kind": "emoji", "value": "😌" }, "voiceClip": "calm",      "tags": ["extended"] },
+    { "id": "surprised", "name": "Surprised", "art": { "kind": "emoji", "value": "😮" }, "voiceClip": "surprised", "tags": ["extended"] }
+  ]
+}

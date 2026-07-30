@@ -1,0 +1,138 @@
+{
+  "id": "flags",
+  "title": "Flags",
+  "color": "teal",
+  "icon": "🚩",
+  "minLevel": 3,
+  "mechanics": ["discover", "findIt", "match"],
+  "items": [
+    {
+      "id": "vietnam", "name": "Vietnam", "voiceClip": "vietnam", "tags": ["asia"],
+      "art": { "kind": "geometry", "value": "flag" },
+      "flag": {
+        "bands": ["#DA251D"], "orientation": "horizontal",
+        "emblem": { "kind": "star", "color": "#FFCD00", "relativeSize": 0.62 }
+      }
+    },
+    {
+      "id": "japan", "name": "Japan", "voiceClip": "japan", "tags": ["asia"],
+      "art": { "kind": "geometry", "value": "flag" },
+      "flag": {
+        "bands": ["#FFFFFF"], "orientation": "horizontal",
+        "emblem": { "kind": "circle", "color": "#BC002D", "relativeSize": 0.42 }
+      }
+    },
+    {
+      "id": "france", "name": "France", "voiceClip": "france", "tags": ["europe"],
+      "art": { "kind": "geometry", "value": "flag" },
+      "flag": { "bands": ["#002395", "#FFFFFF", "#ED2939"], "orientation": "vertical" }
+    },
+    {
+      "id": "italy", "name": "Italy", "voiceClip": "italy", "tags": ["europe"],
+      "art": { "kind": "geometry", "value": "flag" },
+      "flag": { "bands": ["#008C45", "#F4F5F0", "#CD212A"], "orientation": "vertical" }
+    },
+    {
+      "id": "germany", "name": "Germany", "voiceClip": "germany", "tags": ["europe"],
+      "art": { "kind": "geometry", "value": "flag" },
+      "flag": { "bands": ["#000000", "#DD0000", "#FFCE00"], "orientation": "horizontal" }
+    },
+    {
+      "id": "netherlands", "name": "Netherlands", "voiceClip": "netherlands", "tags": ["europe"],
+      "art": { "kind": "geometry", "value": "flag" },
+      "flag": { "bands": ["#AE1C28", "#FFFFFF", "#21468B"], "orientation": "horizontal" }
+    },
+    {
+      "id": "belgium", "name": "Belgium", "voiceClip": "belgium", "tags": ["europe"],
+      "art": { "kind": "geometry", "value": "flag" },
+      "flag": { "bands": ["#000000", "#FDDA24", "#EF3340"], "orientation": "vertical" }
+    },
+    {
+      "id": "ireland", "name": "Ireland", "voiceClip": "ireland", "tags": ["europe"],
+      "art": { "kind": "geometry", "value": "flag" },
+      "flag": { "bands": ["#169B62", "#FFFFFF", "#FF883E"], "orientation": "vertical" }
+    },
+    {
+      "id": "sweden", "name": "Sweden", "voiceClip": "sweden", "tags": ["europe"],
+      "art": { "kind": "geometry", "value": "flag" },
+      "flag": {
+        "bands": ["#006AA7"], "orientation": "horizontal",
+        "emblem": { "kind": "cross", "color": "#FECC00", "relativeSize": 1, "crossOffset": 0.36 }
+      }
+    },
+    {
+      "id": "denmark", "name": "Denmark", "voiceClip": "denmark", "tags": ["europe"],
+      "art": { "kind": "geometry", "value": "flag" },
+      "flag": {
+        "bands": ["#C8102E"], "orientation": "horizontal",
+        "emblem": { "kind": "cross", "color": "#FFFFFF", "relativeSize": 1, "crossOffset": 0.36 }
+      }
+    },
+    {
+      "id": "switzerland", "name": "Switzerland", "voiceClip": "switzerland", "tags": ["europe"],
+      "art": { "kind": "geometry", "value": "flag" },
+      "flag": {
+        "bands": ["#DA291C"], "orientation": "horizontal",
+        "emblem": { "kind": "cross", "color": "#FFFFFF", "relativeSize": 1, "crossOffset": 0.5 }
+      }
+    },
+    {
+      "id": "poland", "name": "Poland", "voiceClip": "poland", "tags": ["europe"],
+      "art": { "kind": "geometry", "value": "flag" },
+      "flag": { "bands": ["#FFFFFF", "#DC143C"], "orientation": "horizontal" }
+    },
+    {
+      "id": "ukraine", "name": "Ukraine", "voiceClip": "ukraine", "tags": ["europe"],
+      "art": { "kind": "geometry", "value": "flag" },
+      "flag": { "bands": ["#005BBB", "#FFD500"], "orientation": "horizontal" }
+    },
+    {
+      "id": "austria", "name": "Austria", "voiceClip": "austria", "tags": ["europe"],
+      "art": { "kind": "geometry", "value": "flag" },
+      "flag": { "bands": ["#ED2939", "#FFFFFF", "#ED2939"], "orientation": "horizontal" }
+    },
+    {
+      "id": "indonesia", "name": "Indonesia", "voiceClip": "indonesia", "tags": ["asia"],
+      "art": { "kind": "geometry", "value": "flag" },
+      "flag": { "bands": ["#FF0000", "#FFFFFF"], "orientation": "horizontal" }
+    },
+    {
+      "id": "thailand", "name": "Thailand", "voiceClip": "thailand", "tags": ["asia"],
+      "art": { "kind": "geometry", "value": "flag" },
+      "flag": {
+        "bands": ["#A51931", "#F4F5F8", "#2D2A4A", "#F4F5F8", "#A51931"],
+        "orientation": "horizontal"
+      }
+    },
+    {
+      "id": "nigeria", "name": "Nigeria", "voiceClip": "nigeria", "tags": ["africa"],
+      "art": { "kind": "geometry", "value": "flag" },
+      "flag": { "bands": ["#008751", "#FFFFFF", "#008751"], "orientation": "vertical" }
+    },
+    {
+      "id": "argentina", "name": "Argentina", "voiceClip": "argentina", "tags": ["americas"],
+      "art": { "kind": "geometry", "value": "flag" },
+      "flag": {
+        "bands": ["#74ACDF", "#FFFFFF", "#74ACDF"], "orientation": "horizontal",
+        "emblem": { "kind": "circle", "color": "#F6B40E", "relativeSize": 0.22 }
+      }
+    },
+    {
+      "id": "canada", "name": "Canada", "voiceClip": "canada", "tags": ["americas"],
+      "art": { "kind": "geometry", "value": "flag" },
+      "flag": {
+        "bands": ["#D80621", "#FFFFFF", "#D80621"], "orientation": "vertical",
+        "assetName": "flag_canada"
+      }
+    },
+    {
+      "id": "brazil", "name": "Brazil", "voiceClip": "brazil", "tags": ["americas"],
+      "art": { "kind": "geometry", "value": "flag" },
+      "flag": {
+        "bands": ["#009C3B"], "orientation": "horizontal",
+        "emblem": { "kind": "circle", "color": "#FFDF00", "relativeSize": 0.5 },
+        "assetName": "flag_brazil"
+      }
+    }
+  ]
+}

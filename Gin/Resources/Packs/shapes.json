@@ -1,0 +1,16 @@
+{
+  "id": "shapes",
+  "title": "Shapes",
+  "color": "sky",
+  "icon": "🔷",
+  "minLevel": 1,
+  "mechanics": ["discover", "findIt", "match", "dropIn"],
+  "items": [
+    { "id": "circle",   "name": "Circle",   "art": { "kind": "geometry", "value": "circle" },   "voiceClip": "circle",   "tags": ["basic"] },
+    { "id": "square",   "name": "Square",   "art": { "kind": "geometry", "value": "square" },   "voiceClip": "square",   "tags": ["basic"] },
+    { "id": "triangle", "name": "Triangle", "art": { "kind": "geometry", "value": "triangle" }, "voiceClip": "triangle", "tags": ["basic"] },
+    { "id": "star",     "name": "Star",     "art": { "kind": "geometry", "value": "star" },     "voiceClip": "star",     "tags": ["fun"] },
+    { "id": "heart",    "name": "Heart",    "art": { "kind": "geometry", "value": "heart" },    "voiceClip": "heart",    "tags": ["fun"] },
+    { "id": "diamond",  "name": "Diamond",  "art": { "kind": "geometry", "value": "diamond" },  "voiceClip": "diamond",  "tags": ["basic"] }
+  ]
+}

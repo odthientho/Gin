@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!--
+		Gin collects nothing and contacts nothing.
+
+		There is no analytics SDK, no crash reporter, no advertising identifier,
+		no account, and no network code of any kind — which is what makes the
+		Kids Category privacy story trivial rather than delicate. If any of these
+		arrays ever stops being empty, that is a decision to make deliberately.
+	-->
+	<key>NSPrivacyTracking</key>
+	<false/>
+
+	<key>NSPrivacyTrackingDomains</key>
+	<array/>
+
+	<key>NSPrivacyCollectedDataTypes</key>
+	<array/>
+
+	<!--
+		No required-reason APIs are used. Progress is a Codable file in
+		Application Support, which is not a declarable category; nothing here
+		touches UserDefaults, disk space, file timestamps, active keyboards or
+		system boot time.
+	-->
+	<key>NSPrivacyAccessedAPITypes</key>
+	<array/>
+</dict>
+</plist>

@@ -1,0 +1,16 @@
+{
+  "id": "math",
+  "title": "Math",
+  "color": "leaf",
+  "icon": "➕",
+  "minLevel": 3,
+  "mechanics": ["addTakeAway", "count"],
+  "items": [
+    { "id": "math_apple",  "name": "Apple",  "art": { "kind": "emoji", "value": "🍎" }, "voiceClip": "apple",  "tags": ["countable"] },
+    { "id": "math_duck",   "name": "Duck",   "art": { "kind": "emoji", "value": "🦆" }, "voiceClip": "duck",   "tags": ["countable"] },
+    { "id": "math_ball",   "name": "Ball",   "art": { "kind": "emoji", "value": "⚽️" }, "voiceClip": "ball",   "tags": ["countable"] },
+    { "id": "math_star",   "name": "Star",   "art": { "kind": "emoji", "value": "⭐️" }, "voiceClip": "star",   "tags": ["countable"] },
+    { "id": "math_fish",   "name": "Fish",   "art": { "kind": "emoji", "value": "🐠" }, "voiceClip": "fish",   "tags": ["countable"] },
+    { "id": "math_cookie", "name": "Cookie", "art": { "kind": "emoji", "value": "🍪" }, "voiceClip": "cookie", "tags": ["countable"] }
+  ]
+}

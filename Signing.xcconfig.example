@@ -1,0 +1,12 @@
+// Local signing settings. Copy to Signing.xcconfig and fill in your own team.
+//
+// Signing.xcconfig is gitignored on purpose: an Apple Development Team ID
+// identifies the developer who owns it, so it does not belong in a public repo.
+//
+// Find yours at https://developer.apple.com/account under Membership Details,
+// or in Xcode under Settings > Accounts.
+//
+// Leaving it empty is fine for building to the Simulator. You only need a team
+// to run on a physical iPad.
+
+DEVELOPMENT_TEAM =

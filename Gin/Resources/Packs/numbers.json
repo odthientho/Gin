@@ -1,0 +1,20 @@
+{
+  "id": "numbers",
+  "title": "Numbers",
+  "color": "grape",
+  "icon": "🔢",
+  "minLevel": 1,
+  "mechanics": ["discover", "findIt", "count", "dropIn"],
+  "items": [
+    { "id": "one",   "name": "One",   "art": { "kind": "geometry", "value": "numeral:1" },  "voiceClip": "one",   "tags": ["1"] },
+    { "id": "two",   "name": "Two",   "art": { "kind": "geometry", "value": "numeral:2" },  "voiceClip": "two",   "tags": ["2"] },
+    { "id": "three", "name": "Three", "art": { "kind": "geometry", "value": "numeral:3" },  "voiceClip": "three", "tags": ["3"] },
+    { "id": "four",  "name": "Four",  "art": { "kind": "geometry", "value": "numeral:4" },  "voiceClip": "four",  "tags": ["4"] },
+    { "id": "five",  "name": "Five",  "art": { "kind": "geometry", "value": "numeral:5" },  "voiceClip": "five",  "tags": ["5"] },
+    { "id": "six",   "name": "Six",   "art": { "kind": "geometry", "value": "numeral:6" },  "voiceClip": "six",   "tags": ["6"] },
+    { "id": "seven", "name": "Seven", "art": { "kind": "geometry", "value": "numeral:7" },  "voiceClip": "seven", "tags": ["7"] },
+    { "id": "eight", "name": "Eight", "art": { "kind": "geometry", "value": "numeral:8" },  "voiceClip": "eight", "tags": ["8"] },
+    { "id": "nine",  "name": "Nine",  "art": { "kind": "geometry", "value": "numeral:9" },  "voiceClip": "nine",  "tags": ["9"] },
+    { "id": "ten",   "name": "Ten",   "art": { "kind": "geometry", "value": "numeral:10" }, "voiceClip": "ten",   "tags": ["10"] }
+  ]
+}

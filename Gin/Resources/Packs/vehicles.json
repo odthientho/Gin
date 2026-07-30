@@ -1,0 +1,22 @@
+{
+  "id": "vehicles",
+  "title": "Vehicles",
+  "color": "sun",
+  "icon": "🚗",
+  "minLevel": 1,
+  "mechanics": ["discover", "findIt", "match", "hearIt"],
+  "items": [
+    { "id": "car",         "name": "Car",         "art": { "kind": "emoji", "value": "🚗" }, "voiceClip": "car",         "effectClip": "car_horn",      "tags": ["road"] },
+    { "id": "bus",         "name": "Bus",         "art": { "kind": "emoji", "value": "🚌" }, "voiceClip": "bus",         "effectClip": "bus_engine",    "tags": ["road"] },
+    { "id": "train",       "name": "Train",       "art": { "kind": "emoji", "value": "🚂" }, "voiceClip": "train",       "effectClip": "train_whistle", "tags": ["rail"] },
+    { "id": "plane",       "name": "Plane",       "art": { "kind": "emoji", "value": "✈️" }, "voiceClip": "plane",       "effectClip": "plane_jet",     "tags": ["air"] },
+    { "id": "boat",        "name": "Boat",        "art": { "kind": "emoji", "value": "⛵️" }, "voiceClip": "boat",        "effectClip": "boat_horn",     "tags": ["water"] },
+    { "id": "truck",       "name": "Truck",       "art": { "kind": "emoji", "value": "🚚" }, "voiceClip": "truck",       "effectClip": "truck_engine",  "tags": ["road"] },
+    { "id": "bike",        "name": "Bike",        "art": { "kind": "emoji", "value": "🚲" }, "voiceClip": "bike",        "effectClip": "bike_bell",     "tags": ["road"] },
+    { "id": "helicopter",  "name": "Helicopter",  "art": { "kind": "emoji", "value": "🚁" }, "voiceClip": "helicopter",  "effectClip": "helicopter",    "tags": ["air"] },
+    { "id": "tractor",     "name": "Tractor",     "art": { "kind": "emoji", "value": "🚜" }, "voiceClip": "tractor",     "effectClip": "tractor",       "tags": ["farm"] },
+    { "id": "fire_truck",  "name": "Fire Truck",  "art": { "kind": "emoji", "value": "🚒" }, "voiceClip": "fire_truck",  "effectClip": "siren",         "tags": ["road"] },
+    { "id": "police_car",  "name": "Police Car",  "art": { "kind": "emoji", "value": "🚓" }, "voiceClip": "police_car",  "effectClip": "siren",         "tags": ["road"] },
+    { "id": "rocket",      "name": "Rocket",      "art": { "kind": "emoji", "value": "🚀" }, "voiceClip": "rocket",      "effectClip": "rocket",        "tags": ["air"] }
+  ]
+}

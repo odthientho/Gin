@@ -1,0 +1,326 @@
+{
+  "id": "letters",
+  "title": "Letters",
+  "color": "grape",
+  "icon": "🅰️",
+  "minLevel": 2,
+  "mechanics": [
+    "discover",
+    "findIt",
+    "match"
+  ],
+  "items": [
+    {
+      "id": "letter_a",
+      "name": "A",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:A"
+      },
+      "voiceClip": "letter_a",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_b",
+      "name": "B",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:B"
+      },
+      "voiceClip": "letter_b",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_c",
+      "name": "C",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:C"
+      },
+      "voiceClip": "letter_c",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_d",
+      "name": "D",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:D"
+      },
+      "voiceClip": "letter_d",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_e",
+      "name": "E",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:E"
+      },
+      "voiceClip": "letter_e",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_f",
+      "name": "F",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:F"
+      },
+      "voiceClip": "letter_f",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_g",
+      "name": "G",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:G"
+      },
+      "voiceClip": "letter_g",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_h",
+      "name": "H",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:H"
+      },
+      "voiceClip": "letter_h",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_i",
+      "name": "I",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:I"
+      },
+      "voiceClip": "letter_i",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_j",
+      "name": "J",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:J"
+      },
+      "voiceClip": "letter_j",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_k",
+      "name": "K",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:K"
+      },
+      "voiceClip": "letter_k",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_l",
+      "name": "L",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:L"
+      },
+      "voiceClip": "letter_l",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_m",
+      "name": "M",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:M"
+      },
+      "voiceClip": "letter_m",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_n",
+      "name": "N",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:N"
+      },
+      "voiceClip": "letter_n",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_o",
+      "name": "O",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:O"
+      },
+      "voiceClip": "letter_o",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_p",
+      "name": "P",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:P"
+      },
+      "voiceClip": "letter_p",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_q",
+      "name": "Q",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:Q"
+      },
+      "voiceClip": "letter_q",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_r",
+      "name": "R",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:R"
+      },
+      "voiceClip": "letter_r",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_s",
+      "name": "S",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:S"
+      },
+      "voiceClip": "letter_s",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_t",
+      "name": "T",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:T"
+      },
+      "voiceClip": "letter_t",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_u",
+      "name": "U",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:U"
+      },
+      "voiceClip": "letter_u",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_v",
+      "name": "V",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:V"
+      },
+      "voiceClip": "letter_v",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_w",
+      "name": "W",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:W"
+      },
+      "voiceClip": "letter_w",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_x",
+      "name": "X",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:X"
+      },
+      "voiceClip": "letter_x",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_y",
+      "name": "Y",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:Y"
+      },
+      "voiceClip": "letter_y",
+      "tags": [
+        "uppercase"
+      ]
+    },
+    {
+      "id": "letter_z",
+      "name": "Z",
+      "art": {
+        "kind": "geometry",
+        "value": "letter:Z"
+      },
+      "voiceClip": "letter_z",
+      "tags": [
+        "uppercase"
+      ]
+    }
+  ]
+}

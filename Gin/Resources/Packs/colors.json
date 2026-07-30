@@ -1,0 +1,18 @@
+{
+  "id": "colors",
+  "title": "Colors",
+  "color": "berry",
+  "icon": "🎨",
+  "minLevel": 1,
+  "mechanics": ["discover", "findIt", "match"],
+  "items": [
+    { "id": "red",    "name": "Red",    "art": { "kind": "geometry", "value": "swatch:#E5352B" }, "voiceClip": "red",    "tags": ["primary"] },
+    { "id": "blue",   "name": "Blue",   "art": { "kind": "geometry", "value": "swatch:#1B6FD1" }, "voiceClip": "blue",   "tags": ["primary"] },
+    { "id": "yellow", "name": "Yellow", "art": { "kind": "geometry", "value": "swatch:#FFC800" }, "voiceClip": "yellow", "tags": ["primary"] },
+    { "id": "green",  "name": "Green",  "art": { "kind": "geometry", "value": "swatch:#22A45D" }, "voiceClip": "green",  "tags": ["secondary"] },
+    { "id": "orange", "name": "Orange", "art": { "kind": "geometry", "value": "swatch:#FF7A2F" }, "voiceClip": "orange", "tags": ["secondary"] },
+    { "id": "purple", "name": "Purple", "art": { "kind": "geometry", "value": "swatch:#7A4FD4" }, "voiceClip": "purple", "tags": ["secondary"] },
+    { "id": "brown",  "name": "Brown",  "art": { "kind": "geometry", "value": "swatch:#8B5A2B" }, "voiceClip": "brown",  "tags": ["secondary"] },
+    { "id": "pink",   "name": "Pink",   "art": { "kind": "geometry", "value": "swatch:#F573A0" }, "voiceClip": "pink",   "tags": ["secondary"] }
+  ]
+}

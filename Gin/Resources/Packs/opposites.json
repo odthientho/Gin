@@ -1,0 +1,22 @@
+{
+  "id": "opposites",
+  "title": "Opposites",
+  "color": "leaf",
+  "icon": "↔️",
+  "minLevel": 2,
+  "mechanics": ["discover", "findIt", "match"],
+  "items": [
+    { "id": "big",   "name": "Big",   "art": { "kind": "emoji", "value": "🐘" }, "voiceClip": "big",   "tags": ["size"] },
+    { "id": "small", "name": "Small", "art": { "kind": "emoji", "value": "🐁" }, "voiceClip": "small", "tags": ["size"] },
+    { "id": "hot",   "name": "Hot",   "art": { "kind": "emoji", "value": "🔥" }, "voiceClip": "hot",   "tags": ["temperature"] },
+    { "id": "cold",  "name": "Cold",  "art": { "kind": "emoji", "value": "❄️" }, "voiceClip": "cold",  "tags": ["temperature"] },
+    { "id": "up",    "name": "Up",    "art": { "kind": "emoji", "value": "⬆️" }, "voiceClip": "up",    "tags": ["direction"] },
+    { "id": "down",  "name": "Down",  "art": { "kind": "emoji", "value": "⬇️" }, "voiceClip": "down",  "tags": ["direction"] },
+    { "id": "loud",  "name": "Loud",  "art": { "kind": "emoji", "value": "📢" }, "voiceClip": "loud",  "tags": ["sound"] },
+    { "id": "quiet", "name": "Quiet", "art": { "kind": "emoji", "value": "🤫" }, "voiceClip": "quiet", "tags": ["sound"] },
+    { "id": "fast",  "name": "Fast",  "art": { "kind": "emoji", "value": "🐆" }, "voiceClip": "fast",  "tags": ["speed"] },
+    { "id": "slow",  "name": "Slow",  "art": { "kind": "emoji", "value": "🐢" }, "voiceClip": "slow",  "tags": ["speed"] },
+    { "id": "wet",   "name": "Wet",   "art": { "kind": "emoji", "value": "💧" }, "voiceClip": "wet",   "tags": ["state"] },
+    { "id": "dry",   "name": "Dry",   "art": { "kind": "emoji", "value": "🏜️" }, "voiceClip": "dry",   "tags": ["state"] }
+  ]
+}

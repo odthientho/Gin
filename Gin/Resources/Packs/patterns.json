@@ -1,0 +1,15 @@
+{
+  "id": "patterns",
+  "title": "Patterns",
+  "color": "sky",
+  "icon": "🔁",
+  "minLevel": 3,
+  "mechanics": ["pattern"],
+  "items": [
+    { "id": "pat_red",    "name": "Red",    "art": { "kind": "geometry", "value": "swatch:#E5352B" }, "voiceClip": "red",    "tags": ["token"] },
+    { "id": "pat_blue",   "name": "Blue",   "art": { "kind": "geometry", "value": "swatch:#1B6FD1" }, "voiceClip": "blue",   "tags": ["token"] },
+    { "id": "pat_yellow", "name": "Yellow", "art": { "kind": "geometry", "value": "swatch:#FFC800" }, "voiceClip": "yellow", "tags": ["token"] },
+    { "id": "pat_green",  "name": "Green",  "art": { "kind": "geometry", "value": "swatch:#22A45D" }, "voiceClip": "green",  "tags": ["token"] },
+    { "id": "pat_purple", "name": "Purple", "art": { "kind": "geometry", "value": "swatch:#7A4FD4" }, "voiceClip": "purple", "tags": ["token"] }
+  ]
+}

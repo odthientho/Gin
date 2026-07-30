@@ -1,0 +1,105 @@
+{
+  "id": "animals",
+  "title": "Animals",
+  "color": "mango",
+  "icon": "🐘",
+  "minLevel": 1,
+  "mechanics": ["discover", "findIt", "match", "count", "hearIt"],
+  "items": [
+    {
+      "id": "cow",
+      "name": "Cow",
+      "art": { "kind": "emoji", "value": "🐄" },
+      "voiceClip": "cow",
+      "effectClip": "cow_moo",
+      "tags": ["farm"]
+    },
+    {
+      "id": "pig",
+      "name": "Pig",
+      "art": { "kind": "emoji", "value": "🐖" },
+      "voiceClip": "pig",
+      "effectClip": "pig_oink",
+      "tags": ["farm"]
+    },
+    {
+      "id": "sheep",
+      "name": "Sheep",
+      "art": { "kind": "emoji", "value": "🐑" },
+      "voiceClip": "sheep",
+      "effectClip": "sheep_baa",
+      "tags": ["farm"]
+    },
+    {
+      "id": "duck",
+      "name": "Duck",
+      "art": { "kind": "emoji", "value": "🦆" },
+      "voiceClip": "duck",
+      "effectClip": "duck_quack",
+      "tags": ["farm"]
+    },
+    {
+      "id": "dog",
+      "name": "Dog",
+      "art": { "kind": "emoji", "value": "🐕" },
+      "voiceClip": "dog",
+      "effectClip": "dog_woof",
+      "tags": ["pets"]
+    },
+    {
+      "id": "cat",
+      "name": "Cat",
+      "art": { "kind": "emoji", "value": "🐈" },
+      "voiceClip": "cat",
+      "effectClip": "cat_meow",
+      "tags": ["pets"]
+    },
+    {
+      "id": "horse",
+      "name": "Horse",
+      "art": { "kind": "emoji", "value": "🐎" },
+      "voiceClip": "horse",
+      "effectClip": "horse_neigh",
+      "tags": ["farm"]
+    },
+    {
+      "id": "elephant",
+      "name": "Elephant",
+      "art": { "kind": "emoji", "value": "🐘" },
+      "voiceClip": "elephant",
+      "effectClip": "elephant_trumpet",
+      "tags": ["wild"]
+    },
+    {
+      "id": "lion",
+      "name": "Lion",
+      "art": { "kind": "emoji", "value": "🦁" },
+      "voiceClip": "lion",
+      "effectClip": "lion_roar",
+      "tags": ["wild"]
+    },
+    {
+      "id": "monkey",
+      "name": "Monkey",
+      "art": { "kind": "emoji", "value": "🐒" },
+      "voiceClip": "monkey",
+      "effectClip": "monkey_chatter",
+      "tags": ["wild"]
+    },
+    {
+      "id": "fish",
+      "name": "Fish",
+      "art": { "kind": "emoji", "value": "🐠" },
+      "voiceClip": "fish",
+      "tags": ["ocean"]
+    },
+    {
+      "id": "whale",
+      "name": "Whale",
+      "art": { "kind": "emoji", "value": "🐳" },
+      "voiceClip": "whale",
+      "effectClip": "whale_song",
+      "tags": ["ocean"]
+    }
+  ]
+}

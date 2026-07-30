@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# Xcode / XcodeGen — the .xcodeproj is generated from project.yml (run setup.sh)
+xcuserdata/
+*.xcuserstate
+*.xcodeproj
+/build/
+.build/
+DerivedData/
+.swiftpm/
+*.moved-aside
+
+# Generated from project.yml
+Gin/Info.plist
+
+# Licensed art is bought, not committed — see LICENSES.md
+Gin/Resources/Art/
+
+# Local signing — an Apple Team ID identifies its owner, so it stays out of a public repo.
+Signing.xcconfig
