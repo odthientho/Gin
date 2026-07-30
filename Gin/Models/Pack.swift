@@ -135,20 +135,28 @@ struct Pack: Codable, Sendable, Hashable, Identifiable {
     /// everything a two-year-old should see is `.little`.
     var minLevel: Level
     var mechanics: [Mechanic]
+    /// Overrides the level's item-pool cap when present. Most packs want the cap
+    /// (a two-year-old meets six animals, not sixteen); Flags is the one pack
+    /// whose entire point is breadth, so it keeps all 195 countries in rotation.
+    var poolSize: Int?
+    /// Declares that this pack's questions can be posed the other way round —
+    /// showing the picture and asking for the name. Data-driven because nothing
+    /// structural distinguishes a flag item any more; an emoji flag looks like
+    /// any other emoji to the model.
+    var visualPrompt: Bool?
     var items: [Item]
 
     func isAvailable(at level: Level) -> Bool { level >= minLevel }
 
-    /// Whether this pack can pose its questions the other way round — showing the
-    /// picture and asking for the name. True for Flags & Countries, which is the
-    /// entire reason ``PromptType`` exists.
+    /// Whether this pack can pose its questions the other way round. The old
+    /// geometry-flag check is kept as a fallback for any pack that still ships
+    /// drawn flag designs.
     var supportsVisualPrompt: Bool {
-        items.contains { $0.flag != nil }
+        visualPrompt ?? items.contains { $0.flag != nil }
     }
 
-    /// The subset of items in play at a given level, so a two-year-old meets
-    /// six animals rather than sixteen.
+    /// The subset of items in play at a given level.
     func items(for params: LevelParams) -> [Item] {
-        Array(items.prefix(params.itemPoolSize))
+        Array(items.prefix(poolSize ?? params.itemPoolSize))
     }
 }

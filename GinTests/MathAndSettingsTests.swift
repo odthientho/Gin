@@ -263,39 +263,58 @@ struct MiddleLevelContentTests {
 
 struct FlagContentTests {
 
-    @Test("The flags pack decodes with its designs intact")
+    @Test("The flags pack carries all 195 countries")
     func flagsDecode() throws {
         let pack = try ContentLoader.load("flags", from: .main)
         #expect(pack.minLevel == .big)
-        #expect(pack.items.count == 20)
-        #expect(pack.items.allSatisfy { $0.flag != nil })
+        #expect(pack.items.count == 195)
+        #expect(Set(pack.items.map(\.id)).count == 195)
+        // No Discover: a no-scroll grid cannot hold 195 tiles.
+        #expect(!pack.mechanics.contains(.discover))
     }
 
-    @Test("Vietnam is first, and is a red field with a yellow star")
-    func vietnamIsDeliberatelyFirst() throws {
+    @Test("Every flag is a valid, unique emoji flag")
+    func flagsAreEmojiFlags() throws {
         let pack = try ContentLoader.load("flags", from: .main)
-        let first = try #require(pack.items.first)
-        #expect(first.id == "vietnam")
+        let indicatorRange = UnicodeScalar(0x1F1E6)! ... UnicodeScalar(0x1F1FF)!
 
-        let flag = try #require(first.flag)
-        #expect(flag.bands == ["#DA251D"])
-        #expect(flag.emblem?.kind == .star)
-        #expect(flag.emblem?.color == "#FFCD00")
-    }
-
-    @Test("Every flag band is a parseable hex color")
-    func bandsAreValidColors() throws {
-        let pack = try ContentLoader.load("flags", from: .main)
         for item in pack.items {
-            let flag = try #require(item.flag)
-            #expect(!flag.bands.isEmpty, "\(item.id) has no bands")
-            for band in flag.bands {
-                #expect(Color(hexString: band) != nil, "\(item.id): bad color \(band)")
-            }
-            if let emblem = flag.emblem {
-                #expect(Color(hexString: emblem.color) != nil, "\(item.id): bad emblem color")
-            }
+            #expect(item.art.kind == .emoji, "\(item.id) is not emoji art")
+            let scalars = Array(item.art.value.unicodeScalars)
+            // A flag emoji is exactly two regional-indicator characters; anything
+            // else renders as floating letters instead of a flag.
+            #expect(scalars.count == 2, "\(item.id): \(scalars.count) scalars")
+            #expect(scalars.allSatisfy { indicatorRange.contains($0) },
+                    "\(item.id) is not made of regional indicators")
         }
+        #expect(Set(pack.items.map(\.art.value)).count == 195, "duplicate flag emoji")
+    }
+
+    /// The 20 countries from the original hand-built pack must keep their ids —
+    /// stickers were earned under them, and a changed id orphans the sticker.
+    @Test("Original flag ids survive the switch to the full country list")
+    func originalIdsAreStable() throws {
+        let ids = Set(try ContentLoader.load("flags", from: .main).items.map(\.id))
+        let original = [
+            "vietnam", "japan", "france", "italy", "germany", "netherlands",
+            "belgium", "ireland", "sweden", "denmark", "switzerland", "poland",
+            "ukraine", "austria", "indonesia", "thailand", "nigeria",
+            "argentina", "canada", "brazil"
+        ]
+        for id in original {
+            #expect(ids.contains(id), "\(id) went missing")
+        }
+    }
+
+    @Test("The pool override keeps every country in rotation")
+    func poolOverrideIsHonored() throws {
+        let pack = try ContentLoader.load("flags", from: .main)
+        // The Big-level cap is 16; flags must ignore it or 179 countries would
+        // silently never appear.
+        #expect(pack.items(for: .params(for: .big)).count == 195)
+        // And a pack without the override still gets capped.
+        let animals = try ContentLoader.load("animals", from: .main)
+        #expect(animals.items(for: .params(for: .little)).count <= 6)
     }
 
     @Test("Only the flags pack claims the visual prompt direction")

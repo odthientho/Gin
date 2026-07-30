@@ -4,135 +4,2352 @@
   "color": "teal",
   "icon": "🚩",
   "minLevel": 3,
-  "mechanics": ["discover", "findIt", "match"],
+  "mechanics": [
+    "findIt",
+    "match"
+  ],
+  "poolSize": 195,
+  "visualPrompt": true,
   "items": [
     {
-      "id": "vietnam", "name": "Vietnam", "voiceClip": "vietnam", "tags": ["asia"],
-      "art": { "kind": "geometry", "value": "flag" },
-      "flag": {
-        "bands": ["#DA251D"], "orientation": "horizontal",
-        "emblem": { "kind": "star", "color": "#FFCD00", "relativeSize": 0.62 }
-      }
+      "id": "afghanistan",
+      "name": "Afghanistan",
+      "art": {
+        "kind": "emoji",
+        "value": "🇦🇫"
+      },
+      "voiceClip": "afghanistan",
+      "tags": [
+        "af"
+      ]
     },
     {
-      "id": "japan", "name": "Japan", "voiceClip": "japan", "tags": ["asia"],
-      "art": { "kind": "geometry", "value": "flag" },
-      "flag": {
-        "bands": ["#FFFFFF"], "orientation": "horizontal",
-        "emblem": { "kind": "circle", "color": "#BC002D", "relativeSize": 0.42 }
-      }
+      "id": "albania",
+      "name": "Albania",
+      "art": {
+        "kind": "emoji",
+        "value": "🇦🇱"
+      },
+      "voiceClip": "albania",
+      "tags": [
+        "al"
+      ]
     },
     {
-      "id": "france", "name": "France", "voiceClip": "france", "tags": ["europe"],
-      "art": { "kind": "geometry", "value": "flag" },
-      "flag": { "bands": ["#002395", "#FFFFFF", "#ED2939"], "orientation": "vertical" }
+      "id": "algeria",
+      "name": "Algeria",
+      "art": {
+        "kind": "emoji",
+        "value": "🇩🇿"
+      },
+      "voiceClip": "algeria",
+      "tags": [
+        "dz"
+      ]
     },
     {
-      "id": "italy", "name": "Italy", "voiceClip": "italy", "tags": ["europe"],
-      "art": { "kind": "geometry", "value": "flag" },
-      "flag": { "bands": ["#008C45", "#F4F5F0", "#CD212A"], "orientation": "vertical" }
+      "id": "andorra",
+      "name": "Andorra",
+      "art": {
+        "kind": "emoji",
+        "value": "🇦🇩"
+      },
+      "voiceClip": "andorra",
+      "tags": [
+        "ad"
+      ]
     },
     {
-      "id": "germany", "name": "Germany", "voiceClip": "germany", "tags": ["europe"],
-      "art": { "kind": "geometry", "value": "flag" },
-      "flag": { "bands": ["#000000", "#DD0000", "#FFCE00"], "orientation": "horizontal" }
+      "id": "angola",
+      "name": "Angola",
+      "art": {
+        "kind": "emoji",
+        "value": "🇦🇴"
+      },
+      "voiceClip": "angola",
+      "tags": [
+        "ao"
+      ]
     },
     {
-      "id": "netherlands", "name": "Netherlands", "voiceClip": "netherlands", "tags": ["europe"],
-      "art": { "kind": "geometry", "value": "flag" },
-      "flag": { "bands": ["#AE1C28", "#FFFFFF", "#21468B"], "orientation": "horizontal" }
+      "id": "antigua_and_barbuda",
+      "name": "Antigua and Barbuda",
+      "art": {
+        "kind": "emoji",
+        "value": "🇦🇬"
+      },
+      "voiceClip": "antigua_and_barbuda",
+      "tags": [
+        "ag"
+      ]
     },
     {
-      "id": "belgium", "name": "Belgium", "voiceClip": "belgium", "tags": ["europe"],
-      "art": { "kind": "geometry", "value": "flag" },
-      "flag": { "bands": ["#000000", "#FDDA24", "#EF3340"], "orientation": "vertical" }
+      "id": "argentina",
+      "name": "Argentina",
+      "art": {
+        "kind": "emoji",
+        "value": "🇦🇷"
+      },
+      "voiceClip": "argentina",
+      "tags": [
+        "ar"
+      ]
     },
     {
-      "id": "ireland", "name": "Ireland", "voiceClip": "ireland", "tags": ["europe"],
-      "art": { "kind": "geometry", "value": "flag" },
-      "flag": { "bands": ["#169B62", "#FFFFFF", "#FF883E"], "orientation": "vertical" }
+      "id": "armenia",
+      "name": "Armenia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇦🇲"
+      },
+      "voiceClip": "armenia",
+      "tags": [
+        "am"
+      ]
     },
     {
-      "id": "sweden", "name": "Sweden", "voiceClip": "sweden", "tags": ["europe"],
-      "art": { "kind": "geometry", "value": "flag" },
-      "flag": {
-        "bands": ["#006AA7"], "orientation": "horizontal",
-        "emblem": { "kind": "cross", "color": "#FECC00", "relativeSize": 1, "crossOffset": 0.36 }
-      }
+      "id": "australia",
+      "name": "Australia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇦🇺"
+      },
+      "voiceClip": "australia",
+      "tags": [
+        "au"
+      ]
     },
     {
-      "id": "denmark", "name": "Denmark", "voiceClip": "denmark", "tags": ["europe"],
-      "art": { "kind": "geometry", "value": "flag" },
-      "flag": {
-        "bands": ["#C8102E"], "orientation": "horizontal",
-        "emblem": { "kind": "cross", "color": "#FFFFFF", "relativeSize": 1, "crossOffset": 0.36 }
-      }
+      "id": "austria",
+      "name": "Austria",
+      "art": {
+        "kind": "emoji",
+        "value": "🇦🇹"
+      },
+      "voiceClip": "austria",
+      "tags": [
+        "at"
+      ]
     },
     {
-      "id": "switzerland", "name": "Switzerland", "voiceClip": "switzerland", "tags": ["europe"],
-      "art": { "kind": "geometry", "value": "flag" },
-      "flag": {
-        "bands": ["#DA291C"], "orientation": "horizontal",
-        "emblem": { "kind": "cross", "color": "#FFFFFF", "relativeSize": 1, "crossOffset": 0.5 }
-      }
+      "id": "azerbaijan",
+      "name": "Azerbaijan",
+      "art": {
+        "kind": "emoji",
+        "value": "🇦🇿"
+      },
+      "voiceClip": "azerbaijan",
+      "tags": [
+        "az"
+      ]
     },
     {
-      "id": "poland", "name": "Poland", "voiceClip": "poland", "tags": ["europe"],
-      "art": { "kind": "geometry", "value": "flag" },
-      "flag": { "bands": ["#FFFFFF", "#DC143C"], "orientation": "horizontal" }
+      "id": "bahamas",
+      "name": "Bahamas",
+      "art": {
+        "kind": "emoji",
+        "value": "🇧🇸"
+      },
+      "voiceClip": "bahamas",
+      "tags": [
+        "bs"
+      ]
     },
     {
-      "id": "ukraine", "name": "Ukraine", "voiceClip": "ukraine", "tags": ["europe"],
-      "art": { "kind": "geometry", "value": "flag" },
-      "flag": { "bands": ["#005BBB", "#FFD500"], "orientation": "horizontal" }
+      "id": "bahrain",
+      "name": "Bahrain",
+      "art": {
+        "kind": "emoji",
+        "value": "🇧🇭"
+      },
+      "voiceClip": "bahrain",
+      "tags": [
+        "bh"
+      ]
     },
     {
-      "id": "austria", "name": "Austria", "voiceClip": "austria", "tags": ["europe"],
-      "art": { "kind": "geometry", "value": "flag" },
-      "flag": { "bands": ["#ED2939", "#FFFFFF", "#ED2939"], "orientation": "horizontal" }
+      "id": "bangladesh",
+      "name": "Bangladesh",
+      "art": {
+        "kind": "emoji",
+        "value": "🇧🇩"
+      },
+      "voiceClip": "bangladesh",
+      "tags": [
+        "bd"
+      ]
     },
     {
-      "id": "indonesia", "name": "Indonesia", "voiceClip": "indonesia", "tags": ["asia"],
-      "art": { "kind": "geometry", "value": "flag" },
-      "flag": { "bands": ["#FF0000", "#FFFFFF"], "orientation": "horizontal" }
+      "id": "barbados",
+      "name": "Barbados",
+      "art": {
+        "kind": "emoji",
+        "value": "🇧🇧"
+      },
+      "voiceClip": "barbados",
+      "tags": [
+        "bb"
+      ]
     },
     {
-      "id": "thailand", "name": "Thailand", "voiceClip": "thailand", "tags": ["asia"],
-      "art": { "kind": "geometry", "value": "flag" },
-      "flag": {
-        "bands": ["#A51931", "#F4F5F8", "#2D2A4A", "#F4F5F8", "#A51931"],
-        "orientation": "horizontal"
-      }
+      "id": "belarus",
+      "name": "Belarus",
+      "art": {
+        "kind": "emoji",
+        "value": "🇧🇾"
+      },
+      "voiceClip": "belarus",
+      "tags": [
+        "by"
+      ]
     },
     {
-      "id": "nigeria", "name": "Nigeria", "voiceClip": "nigeria", "tags": ["africa"],
-      "art": { "kind": "geometry", "value": "flag" },
-      "flag": { "bands": ["#008751", "#FFFFFF", "#008751"], "orientation": "vertical" }
+      "id": "belgium",
+      "name": "Belgium",
+      "art": {
+        "kind": "emoji",
+        "value": "🇧🇪"
+      },
+      "voiceClip": "belgium",
+      "tags": [
+        "be"
+      ]
     },
     {
-      "id": "argentina", "name": "Argentina", "voiceClip": "argentina", "tags": ["americas"],
-      "art": { "kind": "geometry", "value": "flag" },
-      "flag": {
-        "bands": ["#74ACDF", "#FFFFFF", "#74ACDF"], "orientation": "horizontal",
-        "emblem": { "kind": "circle", "color": "#F6B40E", "relativeSize": 0.22 }
-      }
+      "id": "belize",
+      "name": "Belize",
+      "art": {
+        "kind": "emoji",
+        "value": "🇧🇿"
+      },
+      "voiceClip": "belize",
+      "tags": [
+        "bz"
+      ]
     },
     {
-      "id": "canada", "name": "Canada", "voiceClip": "canada", "tags": ["americas"],
-      "art": { "kind": "geometry", "value": "flag" },
-      "flag": {
-        "bands": ["#D80621", "#FFFFFF", "#D80621"], "orientation": "vertical",
-        "assetName": "flag_canada"
-      }
+      "id": "benin",
+      "name": "Benin",
+      "art": {
+        "kind": "emoji",
+        "value": "🇧🇯"
+      },
+      "voiceClip": "benin",
+      "tags": [
+        "bj"
+      ]
     },
     {
-      "id": "brazil", "name": "Brazil", "voiceClip": "brazil", "tags": ["americas"],
-      "art": { "kind": "geometry", "value": "flag" },
-      "flag": {
-        "bands": ["#009C3B"], "orientation": "horizontal",
-        "emblem": { "kind": "circle", "color": "#FFDF00", "relativeSize": 0.5 },
-        "assetName": "flag_brazil"
-      }
+      "id": "bhutan",
+      "name": "Bhutan",
+      "art": {
+        "kind": "emoji",
+        "value": "🇧🇹"
+      },
+      "voiceClip": "bhutan",
+      "tags": [
+        "bt"
+      ]
+    },
+    {
+      "id": "bolivia",
+      "name": "Bolivia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇧🇴"
+      },
+      "voiceClip": "bolivia",
+      "tags": [
+        "bo"
+      ]
+    },
+    {
+      "id": "bosnia_and_herzegovina",
+      "name": "Bosnia and Herzegovina",
+      "art": {
+        "kind": "emoji",
+        "value": "🇧🇦"
+      },
+      "voiceClip": "bosnia_and_herzegovina",
+      "tags": [
+        "ba"
+      ]
+    },
+    {
+      "id": "botswana",
+      "name": "Botswana",
+      "art": {
+        "kind": "emoji",
+        "value": "🇧🇼"
+      },
+      "voiceClip": "botswana",
+      "tags": [
+        "bw"
+      ]
+    },
+    {
+      "id": "brazil",
+      "name": "Brazil",
+      "art": {
+        "kind": "emoji",
+        "value": "🇧🇷"
+      },
+      "voiceClip": "brazil",
+      "tags": [
+        "br"
+      ]
+    },
+    {
+      "id": "brunei",
+      "name": "Brunei",
+      "art": {
+        "kind": "emoji",
+        "value": "🇧🇳"
+      },
+      "voiceClip": "brunei",
+      "tags": [
+        "bn"
+      ]
+    },
+    {
+      "id": "bulgaria",
+      "name": "Bulgaria",
+      "art": {
+        "kind": "emoji",
+        "value": "🇧🇬"
+      },
+      "voiceClip": "bulgaria",
+      "tags": [
+        "bg"
+      ]
+    },
+    {
+      "id": "burkina_faso",
+      "name": "Burkina Faso",
+      "art": {
+        "kind": "emoji",
+        "value": "🇧🇫"
+      },
+      "voiceClip": "burkina_faso",
+      "tags": [
+        "bf"
+      ]
+    },
+    {
+      "id": "burundi",
+      "name": "Burundi",
+      "art": {
+        "kind": "emoji",
+        "value": "🇧🇮"
+      },
+      "voiceClip": "burundi",
+      "tags": [
+        "bi"
+      ]
+    },
+    {
+      "id": "cabo_verde",
+      "name": "Cabo Verde",
+      "art": {
+        "kind": "emoji",
+        "value": "🇨🇻"
+      },
+      "voiceClip": "cabo_verde",
+      "tags": [
+        "cv"
+      ]
+    },
+    {
+      "id": "cambodia",
+      "name": "Cambodia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇰🇭"
+      },
+      "voiceClip": "cambodia",
+      "tags": [
+        "kh"
+      ]
+    },
+    {
+      "id": "cameroon",
+      "name": "Cameroon",
+      "art": {
+        "kind": "emoji",
+        "value": "🇨🇲"
+      },
+      "voiceClip": "cameroon",
+      "tags": [
+        "cm"
+      ]
+    },
+    {
+      "id": "canada",
+      "name": "Canada",
+      "art": {
+        "kind": "emoji",
+        "value": "🇨🇦"
+      },
+      "voiceClip": "canada",
+      "tags": [
+        "ca"
+      ]
+    },
+    {
+      "id": "central_african_republic",
+      "name": "Central African Republic",
+      "art": {
+        "kind": "emoji",
+        "value": "🇨🇫"
+      },
+      "voiceClip": "central_african_republic",
+      "tags": [
+        "cf"
+      ]
+    },
+    {
+      "id": "chad",
+      "name": "Chad",
+      "art": {
+        "kind": "emoji",
+        "value": "🇹🇩"
+      },
+      "voiceClip": "chad",
+      "tags": [
+        "td"
+      ]
+    },
+    {
+      "id": "chile",
+      "name": "Chile",
+      "art": {
+        "kind": "emoji",
+        "value": "🇨🇱"
+      },
+      "voiceClip": "chile",
+      "tags": [
+        "cl"
+      ]
+    },
+    {
+      "id": "china",
+      "name": "China",
+      "art": {
+        "kind": "emoji",
+        "value": "🇨🇳"
+      },
+      "voiceClip": "china",
+      "tags": [
+        "cn"
+      ]
+    },
+    {
+      "id": "colombia",
+      "name": "Colombia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇨🇴"
+      },
+      "voiceClip": "colombia",
+      "tags": [
+        "co"
+      ]
+    },
+    {
+      "id": "comoros",
+      "name": "Comoros",
+      "art": {
+        "kind": "emoji",
+        "value": "🇰🇲"
+      },
+      "voiceClip": "comoros",
+      "tags": [
+        "km"
+      ]
+    },
+    {
+      "id": "congo",
+      "name": "Congo",
+      "art": {
+        "kind": "emoji",
+        "value": "🇨🇬"
+      },
+      "voiceClip": "congo",
+      "tags": [
+        "cg"
+      ]
+    },
+    {
+      "id": "costa_rica",
+      "name": "Costa Rica",
+      "art": {
+        "kind": "emoji",
+        "value": "🇨🇷"
+      },
+      "voiceClip": "costa_rica",
+      "tags": [
+        "cr"
+      ]
+    },
+    {
+      "id": "cote_divoire",
+      "name": "Côte d'Ivoire",
+      "art": {
+        "kind": "emoji",
+        "value": "🇨🇮"
+      },
+      "voiceClip": "cote_divoire",
+      "tags": [
+        "ci"
+      ]
+    },
+    {
+      "id": "croatia",
+      "name": "Croatia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇭🇷"
+      },
+      "voiceClip": "croatia",
+      "tags": [
+        "hr"
+      ]
+    },
+    {
+      "id": "cuba",
+      "name": "Cuba",
+      "art": {
+        "kind": "emoji",
+        "value": "🇨🇺"
+      },
+      "voiceClip": "cuba",
+      "tags": [
+        "cu"
+      ]
+    },
+    {
+      "id": "cyprus",
+      "name": "Cyprus",
+      "art": {
+        "kind": "emoji",
+        "value": "🇨🇾"
+      },
+      "voiceClip": "cyprus",
+      "tags": [
+        "cy"
+      ]
+    },
+    {
+      "id": "czechia",
+      "name": "Czechia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇨🇿"
+      },
+      "voiceClip": "czechia",
+      "tags": [
+        "cz"
+      ]
+    },
+    {
+      "id": "denmark",
+      "name": "Denmark",
+      "art": {
+        "kind": "emoji",
+        "value": "🇩🇰"
+      },
+      "voiceClip": "denmark",
+      "tags": [
+        "dk"
+      ]
+    },
+    {
+      "id": "djibouti",
+      "name": "Djibouti",
+      "art": {
+        "kind": "emoji",
+        "value": "🇩🇯"
+      },
+      "voiceClip": "djibouti",
+      "tags": [
+        "dj"
+      ]
+    },
+    {
+      "id": "dominica",
+      "name": "Dominica",
+      "art": {
+        "kind": "emoji",
+        "value": "🇩🇲"
+      },
+      "voiceClip": "dominica",
+      "tags": [
+        "dm"
+      ]
+    },
+    {
+      "id": "dominican_republic",
+      "name": "Dominican Republic",
+      "art": {
+        "kind": "emoji",
+        "value": "🇩🇴"
+      },
+      "voiceClip": "dominican_republic",
+      "tags": [
+        "do"
+      ]
+    },
+    {
+      "id": "north_korea",
+      "name": "North Korea",
+      "art": {
+        "kind": "emoji",
+        "value": "🇰🇵"
+      },
+      "voiceClip": "north_korea",
+      "tags": [
+        "kp"
+      ]
+    },
+    {
+      "id": "dr_congo",
+      "name": "DR Congo",
+      "art": {
+        "kind": "emoji",
+        "value": "🇨🇩"
+      },
+      "voiceClip": "dr_congo",
+      "tags": [
+        "cd"
+      ]
+    },
+    {
+      "id": "ecuador",
+      "name": "Ecuador",
+      "art": {
+        "kind": "emoji",
+        "value": "🇪🇨"
+      },
+      "voiceClip": "ecuador",
+      "tags": [
+        "ec"
+      ]
+    },
+    {
+      "id": "egypt",
+      "name": "Egypt",
+      "art": {
+        "kind": "emoji",
+        "value": "🇪🇬"
+      },
+      "voiceClip": "egypt",
+      "tags": [
+        "eg"
+      ]
+    },
+    {
+      "id": "el_salvador",
+      "name": "El Salvador",
+      "art": {
+        "kind": "emoji",
+        "value": "🇸🇻"
+      },
+      "voiceClip": "el_salvador",
+      "tags": [
+        "sv"
+      ]
+    },
+    {
+      "id": "equatorial_guinea",
+      "name": "Equatorial Guinea",
+      "art": {
+        "kind": "emoji",
+        "value": "🇬🇶"
+      },
+      "voiceClip": "equatorial_guinea",
+      "tags": [
+        "gq"
+      ]
+    },
+    {
+      "id": "eritrea",
+      "name": "Eritrea",
+      "art": {
+        "kind": "emoji",
+        "value": "🇪🇷"
+      },
+      "voiceClip": "eritrea",
+      "tags": [
+        "er"
+      ]
+    },
+    {
+      "id": "estonia",
+      "name": "Estonia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇪🇪"
+      },
+      "voiceClip": "estonia",
+      "tags": [
+        "ee"
+      ]
+    },
+    {
+      "id": "eswatini",
+      "name": "Eswatini",
+      "art": {
+        "kind": "emoji",
+        "value": "🇸🇿"
+      },
+      "voiceClip": "eswatini",
+      "tags": [
+        "sz"
+      ]
+    },
+    {
+      "id": "ethiopia",
+      "name": "Ethiopia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇪🇹"
+      },
+      "voiceClip": "ethiopia",
+      "tags": [
+        "et"
+      ]
+    },
+    {
+      "id": "fiji",
+      "name": "Fiji",
+      "art": {
+        "kind": "emoji",
+        "value": "🇫🇯"
+      },
+      "voiceClip": "fiji",
+      "tags": [
+        "fj"
+      ]
+    },
+    {
+      "id": "finland",
+      "name": "Finland",
+      "art": {
+        "kind": "emoji",
+        "value": "🇫🇮"
+      },
+      "voiceClip": "finland",
+      "tags": [
+        "fi"
+      ]
+    },
+    {
+      "id": "france",
+      "name": "France",
+      "art": {
+        "kind": "emoji",
+        "value": "🇫🇷"
+      },
+      "voiceClip": "france",
+      "tags": [
+        "fr"
+      ]
+    },
+    {
+      "id": "gabon",
+      "name": "Gabon",
+      "art": {
+        "kind": "emoji",
+        "value": "🇬🇦"
+      },
+      "voiceClip": "gabon",
+      "tags": [
+        "ga"
+      ]
+    },
+    {
+      "id": "gambia",
+      "name": "Gambia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇬🇲"
+      },
+      "voiceClip": "gambia",
+      "tags": [
+        "gm"
+      ]
+    },
+    {
+      "id": "georgia",
+      "name": "Georgia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇬🇪"
+      },
+      "voiceClip": "georgia",
+      "tags": [
+        "ge"
+      ]
+    },
+    {
+      "id": "germany",
+      "name": "Germany",
+      "art": {
+        "kind": "emoji",
+        "value": "🇩🇪"
+      },
+      "voiceClip": "germany",
+      "tags": [
+        "de"
+      ]
+    },
+    {
+      "id": "ghana",
+      "name": "Ghana",
+      "art": {
+        "kind": "emoji",
+        "value": "🇬🇭"
+      },
+      "voiceClip": "ghana",
+      "tags": [
+        "gh"
+      ]
+    },
+    {
+      "id": "greece",
+      "name": "Greece",
+      "art": {
+        "kind": "emoji",
+        "value": "🇬🇷"
+      },
+      "voiceClip": "greece",
+      "tags": [
+        "gr"
+      ]
+    },
+    {
+      "id": "grenada",
+      "name": "Grenada",
+      "art": {
+        "kind": "emoji",
+        "value": "🇬🇩"
+      },
+      "voiceClip": "grenada",
+      "tags": [
+        "gd"
+      ]
+    },
+    {
+      "id": "guatemala",
+      "name": "Guatemala",
+      "art": {
+        "kind": "emoji",
+        "value": "🇬🇹"
+      },
+      "voiceClip": "guatemala",
+      "tags": [
+        "gt"
+      ]
+    },
+    {
+      "id": "guinea",
+      "name": "Guinea",
+      "art": {
+        "kind": "emoji",
+        "value": "🇬🇳"
+      },
+      "voiceClip": "guinea",
+      "tags": [
+        "gn"
+      ]
+    },
+    {
+      "id": "guinea_bissau",
+      "name": "Guinea-Bissau",
+      "art": {
+        "kind": "emoji",
+        "value": "🇬🇼"
+      },
+      "voiceClip": "guinea_bissau",
+      "tags": [
+        "gw"
+      ]
+    },
+    {
+      "id": "guyana",
+      "name": "Guyana",
+      "art": {
+        "kind": "emoji",
+        "value": "🇬🇾"
+      },
+      "voiceClip": "guyana",
+      "tags": [
+        "gy"
+      ]
+    },
+    {
+      "id": "haiti",
+      "name": "Haiti",
+      "art": {
+        "kind": "emoji",
+        "value": "🇭🇹"
+      },
+      "voiceClip": "haiti",
+      "tags": [
+        "ht"
+      ]
+    },
+    {
+      "id": "holy_see",
+      "name": "Holy See",
+      "art": {
+        "kind": "emoji",
+        "value": "🇻🇦"
+      },
+      "voiceClip": "holy_see",
+      "tags": [
+        "va"
+      ]
+    },
+    {
+      "id": "honduras",
+      "name": "Honduras",
+      "art": {
+        "kind": "emoji",
+        "value": "🇭🇳"
+      },
+      "voiceClip": "honduras",
+      "tags": [
+        "hn"
+      ]
+    },
+    {
+      "id": "hungary",
+      "name": "Hungary",
+      "art": {
+        "kind": "emoji",
+        "value": "🇭🇺"
+      },
+      "voiceClip": "hungary",
+      "tags": [
+        "hu"
+      ]
+    },
+    {
+      "id": "iceland",
+      "name": "Iceland",
+      "art": {
+        "kind": "emoji",
+        "value": "🇮🇸"
+      },
+      "voiceClip": "iceland",
+      "tags": [
+        "is"
+      ]
+    },
+    {
+      "id": "india",
+      "name": "India",
+      "art": {
+        "kind": "emoji",
+        "value": "🇮🇳"
+      },
+      "voiceClip": "india",
+      "tags": [
+        "in"
+      ]
+    },
+    {
+      "id": "indonesia",
+      "name": "Indonesia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇮🇩"
+      },
+      "voiceClip": "indonesia",
+      "tags": [
+        "id"
+      ]
+    },
+    {
+      "id": "iran",
+      "name": "Iran",
+      "art": {
+        "kind": "emoji",
+        "value": "🇮🇷"
+      },
+      "voiceClip": "iran",
+      "tags": [
+        "ir"
+      ]
+    },
+    {
+      "id": "iraq",
+      "name": "Iraq",
+      "art": {
+        "kind": "emoji",
+        "value": "🇮🇶"
+      },
+      "voiceClip": "iraq",
+      "tags": [
+        "iq"
+      ]
+    },
+    {
+      "id": "ireland",
+      "name": "Ireland",
+      "art": {
+        "kind": "emoji",
+        "value": "🇮🇪"
+      },
+      "voiceClip": "ireland",
+      "tags": [
+        "ie"
+      ]
+    },
+    {
+      "id": "israel",
+      "name": "Israel",
+      "art": {
+        "kind": "emoji",
+        "value": "🇮🇱"
+      },
+      "voiceClip": "israel",
+      "tags": [
+        "il"
+      ]
+    },
+    {
+      "id": "italy",
+      "name": "Italy",
+      "art": {
+        "kind": "emoji",
+        "value": "🇮🇹"
+      },
+      "voiceClip": "italy",
+      "tags": [
+        "it"
+      ]
+    },
+    {
+      "id": "jamaica",
+      "name": "Jamaica",
+      "art": {
+        "kind": "emoji",
+        "value": "🇯🇲"
+      },
+      "voiceClip": "jamaica",
+      "tags": [
+        "jm"
+      ]
+    },
+    {
+      "id": "japan",
+      "name": "Japan",
+      "art": {
+        "kind": "emoji",
+        "value": "🇯🇵"
+      },
+      "voiceClip": "japan",
+      "tags": [
+        "jp"
+      ]
+    },
+    {
+      "id": "jordan",
+      "name": "Jordan",
+      "art": {
+        "kind": "emoji",
+        "value": "🇯🇴"
+      },
+      "voiceClip": "jordan",
+      "tags": [
+        "jo"
+      ]
+    },
+    {
+      "id": "kazakhstan",
+      "name": "Kazakhstan",
+      "art": {
+        "kind": "emoji",
+        "value": "🇰🇿"
+      },
+      "voiceClip": "kazakhstan",
+      "tags": [
+        "kz"
+      ]
+    },
+    {
+      "id": "kenya",
+      "name": "Kenya",
+      "art": {
+        "kind": "emoji",
+        "value": "🇰🇪"
+      },
+      "voiceClip": "kenya",
+      "tags": [
+        "ke"
+      ]
+    },
+    {
+      "id": "kiribati",
+      "name": "Kiribati",
+      "art": {
+        "kind": "emoji",
+        "value": "🇰🇮"
+      },
+      "voiceClip": "kiribati",
+      "tags": [
+        "ki"
+      ]
+    },
+    {
+      "id": "kuwait",
+      "name": "Kuwait",
+      "art": {
+        "kind": "emoji",
+        "value": "🇰🇼"
+      },
+      "voiceClip": "kuwait",
+      "tags": [
+        "kw"
+      ]
+    },
+    {
+      "id": "kyrgyzstan",
+      "name": "Kyrgyzstan",
+      "art": {
+        "kind": "emoji",
+        "value": "🇰🇬"
+      },
+      "voiceClip": "kyrgyzstan",
+      "tags": [
+        "kg"
+      ]
+    },
+    {
+      "id": "laos",
+      "name": "Laos",
+      "art": {
+        "kind": "emoji",
+        "value": "🇱🇦"
+      },
+      "voiceClip": "laos",
+      "tags": [
+        "la"
+      ]
+    },
+    {
+      "id": "latvia",
+      "name": "Latvia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇱🇻"
+      },
+      "voiceClip": "latvia",
+      "tags": [
+        "lv"
+      ]
+    },
+    {
+      "id": "lebanon",
+      "name": "Lebanon",
+      "art": {
+        "kind": "emoji",
+        "value": "🇱🇧"
+      },
+      "voiceClip": "lebanon",
+      "tags": [
+        "lb"
+      ]
+    },
+    {
+      "id": "lesotho",
+      "name": "Lesotho",
+      "art": {
+        "kind": "emoji",
+        "value": "🇱🇸"
+      },
+      "voiceClip": "lesotho",
+      "tags": [
+        "ls"
+      ]
+    },
+    {
+      "id": "liberia",
+      "name": "Liberia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇱🇷"
+      },
+      "voiceClip": "liberia",
+      "tags": [
+        "lr"
+      ]
+    },
+    {
+      "id": "libya",
+      "name": "Libya",
+      "art": {
+        "kind": "emoji",
+        "value": "🇱🇾"
+      },
+      "voiceClip": "libya",
+      "tags": [
+        "ly"
+      ]
+    },
+    {
+      "id": "liechtenstein",
+      "name": "Liechtenstein",
+      "art": {
+        "kind": "emoji",
+        "value": "🇱🇮"
+      },
+      "voiceClip": "liechtenstein",
+      "tags": [
+        "li"
+      ]
+    },
+    {
+      "id": "lithuania",
+      "name": "Lithuania",
+      "art": {
+        "kind": "emoji",
+        "value": "🇱🇹"
+      },
+      "voiceClip": "lithuania",
+      "tags": [
+        "lt"
+      ]
+    },
+    {
+      "id": "luxembourg",
+      "name": "Luxembourg",
+      "art": {
+        "kind": "emoji",
+        "value": "🇱🇺"
+      },
+      "voiceClip": "luxembourg",
+      "tags": [
+        "lu"
+      ]
+    },
+    {
+      "id": "madagascar",
+      "name": "Madagascar",
+      "art": {
+        "kind": "emoji",
+        "value": "🇲🇬"
+      },
+      "voiceClip": "madagascar",
+      "tags": [
+        "mg"
+      ]
+    },
+    {
+      "id": "malawi",
+      "name": "Malawi",
+      "art": {
+        "kind": "emoji",
+        "value": "🇲🇼"
+      },
+      "voiceClip": "malawi",
+      "tags": [
+        "mw"
+      ]
+    },
+    {
+      "id": "malaysia",
+      "name": "Malaysia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇲🇾"
+      },
+      "voiceClip": "malaysia",
+      "tags": [
+        "my"
+      ]
+    },
+    {
+      "id": "maldives",
+      "name": "Maldives",
+      "art": {
+        "kind": "emoji",
+        "value": "🇲🇻"
+      },
+      "voiceClip": "maldives",
+      "tags": [
+        "mv"
+      ]
+    },
+    {
+      "id": "mali",
+      "name": "Mali",
+      "art": {
+        "kind": "emoji",
+        "value": "🇲🇱"
+      },
+      "voiceClip": "mali",
+      "tags": [
+        "ml"
+      ]
+    },
+    {
+      "id": "malta",
+      "name": "Malta",
+      "art": {
+        "kind": "emoji",
+        "value": "🇲🇹"
+      },
+      "voiceClip": "malta",
+      "tags": [
+        "mt"
+      ]
+    },
+    {
+      "id": "marshall_islands",
+      "name": "Marshall Islands",
+      "art": {
+        "kind": "emoji",
+        "value": "🇲🇭"
+      },
+      "voiceClip": "marshall_islands",
+      "tags": [
+        "mh"
+      ]
+    },
+    {
+      "id": "mauritania",
+      "name": "Mauritania",
+      "art": {
+        "kind": "emoji",
+        "value": "🇲🇷"
+      },
+      "voiceClip": "mauritania",
+      "tags": [
+        "mr"
+      ]
+    },
+    {
+      "id": "mauritius",
+      "name": "Mauritius",
+      "art": {
+        "kind": "emoji",
+        "value": "🇲🇺"
+      },
+      "voiceClip": "mauritius",
+      "tags": [
+        "mu"
+      ]
+    },
+    {
+      "id": "mexico",
+      "name": "Mexico",
+      "art": {
+        "kind": "emoji",
+        "value": "🇲🇽"
+      },
+      "voiceClip": "mexico",
+      "tags": [
+        "mx"
+      ]
+    },
+    {
+      "id": "micronesia",
+      "name": "Micronesia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇫🇲"
+      },
+      "voiceClip": "micronesia",
+      "tags": [
+        "fm"
+      ]
+    },
+    {
+      "id": "moldova",
+      "name": "Moldova",
+      "art": {
+        "kind": "emoji",
+        "value": "🇲🇩"
+      },
+      "voiceClip": "moldova",
+      "tags": [
+        "md"
+      ]
+    },
+    {
+      "id": "monaco",
+      "name": "Monaco",
+      "art": {
+        "kind": "emoji",
+        "value": "🇲🇨"
+      },
+      "voiceClip": "monaco",
+      "tags": [
+        "mc"
+      ]
+    },
+    {
+      "id": "mongolia",
+      "name": "Mongolia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇲🇳"
+      },
+      "voiceClip": "mongolia",
+      "tags": [
+        "mn"
+      ]
+    },
+    {
+      "id": "montenegro",
+      "name": "Montenegro",
+      "art": {
+        "kind": "emoji",
+        "value": "🇲🇪"
+      },
+      "voiceClip": "montenegro",
+      "tags": [
+        "me"
+      ]
+    },
+    {
+      "id": "morocco",
+      "name": "Morocco",
+      "art": {
+        "kind": "emoji",
+        "value": "🇲🇦"
+      },
+      "voiceClip": "morocco",
+      "tags": [
+        "ma"
+      ]
+    },
+    {
+      "id": "mozambique",
+      "name": "Mozambique",
+      "art": {
+        "kind": "emoji",
+        "value": "🇲🇿"
+      },
+      "voiceClip": "mozambique",
+      "tags": [
+        "mz"
+      ]
+    },
+    {
+      "id": "myanmar",
+      "name": "Myanmar",
+      "art": {
+        "kind": "emoji",
+        "value": "🇲🇲"
+      },
+      "voiceClip": "myanmar",
+      "tags": [
+        "mm"
+      ]
+    },
+    {
+      "id": "namibia",
+      "name": "Namibia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇳🇦"
+      },
+      "voiceClip": "namibia",
+      "tags": [
+        "na"
+      ]
+    },
+    {
+      "id": "nauru",
+      "name": "Nauru",
+      "art": {
+        "kind": "emoji",
+        "value": "🇳🇷"
+      },
+      "voiceClip": "nauru",
+      "tags": [
+        "nr"
+      ]
+    },
+    {
+      "id": "nepal",
+      "name": "Nepal",
+      "art": {
+        "kind": "emoji",
+        "value": "🇳🇵"
+      },
+      "voiceClip": "nepal",
+      "tags": [
+        "np"
+      ]
+    },
+    {
+      "id": "netherlands",
+      "name": "Netherlands",
+      "art": {
+        "kind": "emoji",
+        "value": "🇳🇱"
+      },
+      "voiceClip": "netherlands",
+      "tags": [
+        "nl"
+      ]
+    },
+    {
+      "id": "new_zealand",
+      "name": "New Zealand",
+      "art": {
+        "kind": "emoji",
+        "value": "🇳🇿"
+      },
+      "voiceClip": "new_zealand",
+      "tags": [
+        "nz"
+      ]
+    },
+    {
+      "id": "nicaragua",
+      "name": "Nicaragua",
+      "art": {
+        "kind": "emoji",
+        "value": "🇳🇮"
+      },
+      "voiceClip": "nicaragua",
+      "tags": [
+        "ni"
+      ]
+    },
+    {
+      "id": "niger",
+      "name": "Niger",
+      "art": {
+        "kind": "emoji",
+        "value": "🇳🇪"
+      },
+      "voiceClip": "niger",
+      "tags": [
+        "ne"
+      ]
+    },
+    {
+      "id": "nigeria",
+      "name": "Nigeria",
+      "art": {
+        "kind": "emoji",
+        "value": "🇳🇬"
+      },
+      "voiceClip": "nigeria",
+      "tags": [
+        "ng"
+      ]
+    },
+    {
+      "id": "north_macedonia",
+      "name": "North Macedonia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇲🇰"
+      },
+      "voiceClip": "north_macedonia",
+      "tags": [
+        "mk"
+      ]
+    },
+    {
+      "id": "norway",
+      "name": "Norway",
+      "art": {
+        "kind": "emoji",
+        "value": "🇳🇴"
+      },
+      "voiceClip": "norway",
+      "tags": [
+        "no"
+      ]
+    },
+    {
+      "id": "oman",
+      "name": "Oman",
+      "art": {
+        "kind": "emoji",
+        "value": "🇴🇲"
+      },
+      "voiceClip": "oman",
+      "tags": [
+        "om"
+      ]
+    },
+    {
+      "id": "pakistan",
+      "name": "Pakistan",
+      "art": {
+        "kind": "emoji",
+        "value": "🇵🇰"
+      },
+      "voiceClip": "pakistan",
+      "tags": [
+        "pk"
+      ]
+    },
+    {
+      "id": "palau",
+      "name": "Palau",
+      "art": {
+        "kind": "emoji",
+        "value": "🇵🇼"
+      },
+      "voiceClip": "palau",
+      "tags": [
+        "pw"
+      ]
+    },
+    {
+      "id": "panama",
+      "name": "Panama",
+      "art": {
+        "kind": "emoji",
+        "value": "🇵🇦"
+      },
+      "voiceClip": "panama",
+      "tags": [
+        "pa"
+      ]
+    },
+    {
+      "id": "papua_new_guinea",
+      "name": "Papua New Guinea",
+      "art": {
+        "kind": "emoji",
+        "value": "🇵🇬"
+      },
+      "voiceClip": "papua_new_guinea",
+      "tags": [
+        "pg"
+      ]
+    },
+    {
+      "id": "paraguay",
+      "name": "Paraguay",
+      "art": {
+        "kind": "emoji",
+        "value": "🇵🇾"
+      },
+      "voiceClip": "paraguay",
+      "tags": [
+        "py"
+      ]
+    },
+    {
+      "id": "peru",
+      "name": "Peru",
+      "art": {
+        "kind": "emoji",
+        "value": "🇵🇪"
+      },
+      "voiceClip": "peru",
+      "tags": [
+        "pe"
+      ]
+    },
+    {
+      "id": "philippines",
+      "name": "Philippines",
+      "art": {
+        "kind": "emoji",
+        "value": "🇵🇭"
+      },
+      "voiceClip": "philippines",
+      "tags": [
+        "ph"
+      ]
+    },
+    {
+      "id": "poland",
+      "name": "Poland",
+      "art": {
+        "kind": "emoji",
+        "value": "🇵🇱"
+      },
+      "voiceClip": "poland",
+      "tags": [
+        "pl"
+      ]
+    },
+    {
+      "id": "portugal",
+      "name": "Portugal",
+      "art": {
+        "kind": "emoji",
+        "value": "🇵🇹"
+      },
+      "voiceClip": "portugal",
+      "tags": [
+        "pt"
+      ]
+    },
+    {
+      "id": "qatar",
+      "name": "Qatar",
+      "art": {
+        "kind": "emoji",
+        "value": "🇶🇦"
+      },
+      "voiceClip": "qatar",
+      "tags": [
+        "qa"
+      ]
+    },
+    {
+      "id": "romania",
+      "name": "Romania",
+      "art": {
+        "kind": "emoji",
+        "value": "🇷🇴"
+      },
+      "voiceClip": "romania",
+      "tags": [
+        "ro"
+      ]
+    },
+    {
+      "id": "russia",
+      "name": "Russia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇷🇺"
+      },
+      "voiceClip": "russia",
+      "tags": [
+        "ru"
+      ]
+    },
+    {
+      "id": "rwanda",
+      "name": "Rwanda",
+      "art": {
+        "kind": "emoji",
+        "value": "🇷🇼"
+      },
+      "voiceClip": "rwanda",
+      "tags": [
+        "rw"
+      ]
+    },
+    {
+      "id": "saint_kitts_and_nevis",
+      "name": "Saint Kitts and Nevis",
+      "art": {
+        "kind": "emoji",
+        "value": "🇰🇳"
+      },
+      "voiceClip": "saint_kitts_and_nevis",
+      "tags": [
+        "kn"
+      ]
+    },
+    {
+      "id": "saint_lucia",
+      "name": "Saint Lucia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇱🇨"
+      },
+      "voiceClip": "saint_lucia",
+      "tags": [
+        "lc"
+      ]
+    },
+    {
+      "id": "samoa",
+      "name": "Samoa",
+      "art": {
+        "kind": "emoji",
+        "value": "🇼🇸"
+      },
+      "voiceClip": "samoa",
+      "tags": [
+        "ws"
+      ]
+    },
+    {
+      "id": "san_marino",
+      "name": "San Marino",
+      "art": {
+        "kind": "emoji",
+        "value": "🇸🇲"
+      },
+      "voiceClip": "san_marino",
+      "tags": [
+        "sm"
+      ]
+    },
+    {
+      "id": "sao_tome_and_principe",
+      "name": "Sao Tome and Principe",
+      "art": {
+        "kind": "emoji",
+        "value": "🇸🇹"
+      },
+      "voiceClip": "sao_tome_and_principe",
+      "tags": [
+        "st"
+      ]
+    },
+    {
+      "id": "saudi_arabia",
+      "name": "Saudi Arabia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇸🇦"
+      },
+      "voiceClip": "saudi_arabia",
+      "tags": [
+        "sa"
+      ]
+    },
+    {
+      "id": "senegal",
+      "name": "Senegal",
+      "art": {
+        "kind": "emoji",
+        "value": "🇸🇳"
+      },
+      "voiceClip": "senegal",
+      "tags": [
+        "sn"
+      ]
+    },
+    {
+      "id": "serbia",
+      "name": "Serbia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇷🇸"
+      },
+      "voiceClip": "serbia",
+      "tags": [
+        "rs"
+      ]
+    },
+    {
+      "id": "seychelles",
+      "name": "Seychelles",
+      "art": {
+        "kind": "emoji",
+        "value": "🇸🇨"
+      },
+      "voiceClip": "seychelles",
+      "tags": [
+        "sc"
+      ]
+    },
+    {
+      "id": "sierra_leone",
+      "name": "Sierra Leone",
+      "art": {
+        "kind": "emoji",
+        "value": "🇸🇱"
+      },
+      "voiceClip": "sierra_leone",
+      "tags": [
+        "sl"
+      ]
+    },
+    {
+      "id": "singapore",
+      "name": "Singapore",
+      "art": {
+        "kind": "emoji",
+        "value": "🇸🇬"
+      },
+      "voiceClip": "singapore",
+      "tags": [
+        "sg"
+      ]
+    },
+    {
+      "id": "slovakia",
+      "name": "Slovakia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇸🇰"
+      },
+      "voiceClip": "slovakia",
+      "tags": [
+        "sk"
+      ]
+    },
+    {
+      "id": "slovenia",
+      "name": "Slovenia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇸🇮"
+      },
+      "voiceClip": "slovenia",
+      "tags": [
+        "si"
+      ]
+    },
+    {
+      "id": "solomon_islands",
+      "name": "Solomon Islands",
+      "art": {
+        "kind": "emoji",
+        "value": "🇸🇧"
+      },
+      "voiceClip": "solomon_islands",
+      "tags": [
+        "sb"
+      ]
+    },
+    {
+      "id": "somalia",
+      "name": "Somalia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇸🇴"
+      },
+      "voiceClip": "somalia",
+      "tags": [
+        "so"
+      ]
+    },
+    {
+      "id": "south_africa",
+      "name": "South Africa",
+      "art": {
+        "kind": "emoji",
+        "value": "🇿🇦"
+      },
+      "voiceClip": "south_africa",
+      "tags": [
+        "za"
+      ]
+    },
+    {
+      "id": "south_korea",
+      "name": "South Korea",
+      "art": {
+        "kind": "emoji",
+        "value": "🇰🇷"
+      },
+      "voiceClip": "south_korea",
+      "tags": [
+        "kr"
+      ]
+    },
+    {
+      "id": "south_sudan",
+      "name": "South Sudan",
+      "art": {
+        "kind": "emoji",
+        "value": "🇸🇸"
+      },
+      "voiceClip": "south_sudan",
+      "tags": [
+        "ss"
+      ]
+    },
+    {
+      "id": "spain",
+      "name": "Spain",
+      "art": {
+        "kind": "emoji",
+        "value": "🇪🇸"
+      },
+      "voiceClip": "spain",
+      "tags": [
+        "es"
+      ]
+    },
+    {
+      "id": "sri_lanka",
+      "name": "Sri Lanka",
+      "art": {
+        "kind": "emoji",
+        "value": "🇱🇰"
+      },
+      "voiceClip": "sri_lanka",
+      "tags": [
+        "lk"
+      ]
+    },
+    {
+      "id": "saint_vincent_and_the_grenadines",
+      "name": "Saint Vincent and the Grenadines",
+      "art": {
+        "kind": "emoji",
+        "value": "🇻🇨"
+      },
+      "voiceClip": "saint_vincent_and_the_grenadines",
+      "tags": [
+        "vc"
+      ]
+    },
+    {
+      "id": "state_of_palestine",
+      "name": "State of Palestine",
+      "art": {
+        "kind": "emoji",
+        "value": "🇵🇸"
+      },
+      "voiceClip": "state_of_palestine",
+      "tags": [
+        "ps"
+      ]
+    },
+    {
+      "id": "sudan",
+      "name": "Sudan",
+      "art": {
+        "kind": "emoji",
+        "value": "🇸🇩"
+      },
+      "voiceClip": "sudan",
+      "tags": [
+        "sd"
+      ]
+    },
+    {
+      "id": "suriname",
+      "name": "Suriname",
+      "art": {
+        "kind": "emoji",
+        "value": "🇸🇷"
+      },
+      "voiceClip": "suriname",
+      "tags": [
+        "sr"
+      ]
+    },
+    {
+      "id": "sweden",
+      "name": "Sweden",
+      "art": {
+        "kind": "emoji",
+        "value": "🇸🇪"
+      },
+      "voiceClip": "sweden",
+      "tags": [
+        "se"
+      ]
+    },
+    {
+      "id": "switzerland",
+      "name": "Switzerland",
+      "art": {
+        "kind": "emoji",
+        "value": "🇨🇭"
+      },
+      "voiceClip": "switzerland",
+      "tags": [
+        "ch"
+      ]
+    },
+    {
+      "id": "syria",
+      "name": "Syria",
+      "art": {
+        "kind": "emoji",
+        "value": "🇸🇾"
+      },
+      "voiceClip": "syria",
+      "tags": [
+        "sy"
+      ]
+    },
+    {
+      "id": "tajikistan",
+      "name": "Tajikistan",
+      "art": {
+        "kind": "emoji",
+        "value": "🇹🇯"
+      },
+      "voiceClip": "tajikistan",
+      "tags": [
+        "tj"
+      ]
+    },
+    {
+      "id": "tanzania",
+      "name": "Tanzania",
+      "art": {
+        "kind": "emoji",
+        "value": "🇹🇿"
+      },
+      "voiceClip": "tanzania",
+      "tags": [
+        "tz"
+      ]
+    },
+    {
+      "id": "thailand",
+      "name": "Thailand",
+      "art": {
+        "kind": "emoji",
+        "value": "🇹🇭"
+      },
+      "voiceClip": "thailand",
+      "tags": [
+        "th"
+      ]
+    },
+    {
+      "id": "timor_leste",
+      "name": "Timor-Leste",
+      "art": {
+        "kind": "emoji",
+        "value": "🇹🇱"
+      },
+      "voiceClip": "timor_leste",
+      "tags": [
+        "tl"
+      ]
+    },
+    {
+      "id": "togo",
+      "name": "Togo",
+      "art": {
+        "kind": "emoji",
+        "value": "🇹🇬"
+      },
+      "voiceClip": "togo",
+      "tags": [
+        "tg"
+      ]
+    },
+    {
+      "id": "tonga",
+      "name": "Tonga",
+      "art": {
+        "kind": "emoji",
+        "value": "🇹🇴"
+      },
+      "voiceClip": "tonga",
+      "tags": [
+        "to"
+      ]
+    },
+    {
+      "id": "trinidad_and_tobago",
+      "name": "Trinidad and Tobago",
+      "art": {
+        "kind": "emoji",
+        "value": "🇹🇹"
+      },
+      "voiceClip": "trinidad_and_tobago",
+      "tags": [
+        "tt"
+      ]
+    },
+    {
+      "id": "tunisia",
+      "name": "Tunisia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇹🇳"
+      },
+      "voiceClip": "tunisia",
+      "tags": [
+        "tn"
+      ]
+    },
+    {
+      "id": "turkey",
+      "name": "Turkey",
+      "art": {
+        "kind": "emoji",
+        "value": "🇹🇷"
+      },
+      "voiceClip": "turkey",
+      "tags": [
+        "tr"
+      ]
+    },
+    {
+      "id": "turkmenistan",
+      "name": "Turkmenistan",
+      "art": {
+        "kind": "emoji",
+        "value": "🇹🇲"
+      },
+      "voiceClip": "turkmenistan",
+      "tags": [
+        "tm"
+      ]
+    },
+    {
+      "id": "tuvalu",
+      "name": "Tuvalu",
+      "art": {
+        "kind": "emoji",
+        "value": "🇹🇻"
+      },
+      "voiceClip": "tuvalu",
+      "tags": [
+        "tv"
+      ]
+    },
+    {
+      "id": "united_arab_emirates",
+      "name": "United Arab Emirates",
+      "art": {
+        "kind": "emoji",
+        "value": "🇦🇪"
+      },
+      "voiceClip": "united_arab_emirates",
+      "tags": [
+        "ae"
+      ]
+    },
+    {
+      "id": "united_kingdom",
+      "name": "United Kingdom",
+      "art": {
+        "kind": "emoji",
+        "value": "🇬🇧"
+      },
+      "voiceClip": "united_kingdom",
+      "tags": [
+        "gb"
+      ]
+    },
+    {
+      "id": "united_states",
+      "name": "United States",
+      "art": {
+        "kind": "emoji",
+        "value": "🇺🇸"
+      },
+      "voiceClip": "united_states",
+      "tags": [
+        "us"
+      ]
+    },
+    {
+      "id": "uganda",
+      "name": "Uganda",
+      "art": {
+        "kind": "emoji",
+        "value": "🇺🇬"
+      },
+      "voiceClip": "uganda",
+      "tags": [
+        "ug"
+      ]
+    },
+    {
+      "id": "ukraine",
+      "name": "Ukraine",
+      "art": {
+        "kind": "emoji",
+        "value": "🇺🇦"
+      },
+      "voiceClip": "ukraine",
+      "tags": [
+        "ua"
+      ]
+    },
+    {
+      "id": "uruguay",
+      "name": "Uruguay",
+      "art": {
+        "kind": "emoji",
+        "value": "🇺🇾"
+      },
+      "voiceClip": "uruguay",
+      "tags": [
+        "uy"
+      ]
+    },
+    {
+      "id": "uzbekistan",
+      "name": "Uzbekistan",
+      "art": {
+        "kind": "emoji",
+        "value": "🇺🇿"
+      },
+      "voiceClip": "uzbekistan",
+      "tags": [
+        "uz"
+      ]
+    },
+    {
+      "id": "vanuatu",
+      "name": "Vanuatu",
+      "art": {
+        "kind": "emoji",
+        "value": "🇻🇺"
+      },
+      "voiceClip": "vanuatu",
+      "tags": [
+        "vu"
+      ]
+    },
+    {
+      "id": "venezuela",
+      "name": "Venezuela",
+      "art": {
+        "kind": "emoji",
+        "value": "🇻🇪"
+      },
+      "voiceClip": "venezuela",
+      "tags": [
+        "ve"
+      ]
+    },
+    {
+      "id": "vietnam",
+      "name": "Vietnam",
+      "art": {
+        "kind": "emoji",
+        "value": "🇻🇳"
+      },
+      "voiceClip": "vietnam",
+      "tags": [
+        "vn"
+      ]
+    },
+    {
+      "id": "yemen",
+      "name": "Yemen",
+      "art": {
+        "kind": "emoji",
+        "value": "🇾🇪"
+      },
+      "voiceClip": "yemen",
+      "tags": [
+        "ye"
+      ]
+    },
+    {
+      "id": "zambia",
+      "name": "Zambia",
+      "art": {
+        "kind": "emoji",
+        "value": "🇿🇲"
+      },
+      "voiceClip": "zambia",
+      "tags": [
+        "zm"
+      ]
+    },
+    {
+      "id": "zimbabwe",
+      "name": "Zimbabwe",
+      "art": {
+        "kind": "emoji",
+        "value": "🇿🇼"
+      },
+      "voiceClip": "zimbabwe",
+      "tags": [
+        "zw"
+      ]
     }
   ]
 }
