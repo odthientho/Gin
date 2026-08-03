@@ -1,0 +1,16 @@
+{
+  "id": "logic",
+  "title": "Logic",
+  "color": "mango",
+  "icon": "🧩",
+  "minLevel": 2,
+  "mechanics": ["logic"],
+  "items": [
+    { "id": "logic_tier1", "name": "Odd One Out",  "art": { "kind": "geometry", "value": "circle" },   "voiceClip": "logic_tier1", "tags": ["rung"] },
+    { "id": "logic_tier2", "name": "Sorter",       "art": { "kind": "geometry", "value": "triangle" }, "voiceClip": "logic_tier2", "tags": ["rung"] },
+    { "id": "logic_tier3", "name": "Grid Solver",  "art": { "kind": "geometry", "value": "square" },   "voiceClip": "logic_tier3", "tags": ["rung"] },
+    { "id": "logic_tier4", "name": "Double Rule",  "art": { "kind": "geometry", "value": "diamond" },  "voiceClip": "logic_tier4", "tags": ["rung"] },
+    { "id": "logic_tier5", "name": "Big Grid",     "art": { "kind": "geometry", "value": "star" },     "voiceClip": "logic_tier5", "tags": ["rung"] },
+    { "id": "logic_tier6", "name": "Puzzle Master","art": { "kind": "geometry", "value": "heart" },    "voiceClip": "logic_tier6", "tags": ["rung"] }
+  ]
+}

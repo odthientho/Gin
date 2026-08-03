@@ -29,6 +29,8 @@ private struct ProgressSnapshot: Codable {
     /// when the property has a default, so a required new field would make every
     /// pre-upgrade progress file "corrupt" and silently wipe a child's stickers.
     var flashcardIndices: [String: Int]?
+    /// Hardest reasoning rung unlocked, per pack. Optional for the same reason.
+    var logicTiers: [String: Int]?
     /// Same Codable caution. Pack id → items proven in a quiz, which is what
     /// advances a grouped pack to its next learning group.
     var masteredIDs: [String: [String]]?
@@ -54,6 +56,9 @@ final class ProgressStore {
 
     /// Per-pack flashcard positions, keyed by pack id.
     private(set) var flashcardIndices: [String: Int] = [:]
+
+    /// Hardest reasoning rung unlocked, per pack. Rungs never lock again.
+    private(set) var logicTiers: [String: Int] = [:]
 
     /// Per-pack ids the child has answered correctly in a quiz. This is what
     /// "learning the first 25" means operationally: the next group of a grouped
@@ -114,6 +119,20 @@ final class ProgressStore {
         save()
     }
 
+    /// Defaults to the first rung rather than zero, so a fresh child starts at
+    /// the easiest puzzle rather than an invalid one.
+    func logicTier(for packID: String) -> Int {
+        max(1, logicTiers[packID] ?? 1)
+    }
+
+    /// Only ever raises. A rung, once reached, stays reached — there are no fail
+    /// states in this app, and demoting a child would be the sharpest one.
+    func setLogicTier(_ tier: Int, for packID: String) {
+        guard tier > logicTier(for: packID) else { return }
+        logicTiers[packID] = tier
+        save()
+    }
+
     func mastered(in packID: String) -> Set<String> {
         masteredIDs[packID] ?? []
     }
@@ -156,6 +175,7 @@ final class ProgressStore {
         placements = snapshot.placements
         writingIndex = snapshot.writingIndex
         flashcardIndices = snapshot.flashcardIndices ?? [:]
+        logicTiers = snapshot.logicTiers ?? [:]
         masteredIDs = (snapshot.masteredIDs ?? [:]).mapValues(Set.init)
     }
 
@@ -166,6 +186,7 @@ final class ProgressStore {
             placements: placements,
             writingIndex: writingIndex,
             flashcardIndices: flashcardIndices,
+            logicTiers: logicTiers,
             masteredIDs: masteredIDs.mapValues { Array($0).sorted() }
         )
         guard let data = try? JSONEncoder().encode(snapshot) else { return }
