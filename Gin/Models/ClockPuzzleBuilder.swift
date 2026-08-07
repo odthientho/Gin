@@ -1,6 +1,12 @@
 import Foundation
 
-/// Difficulty rungs for reading a dial, in the order clocks are actually taught.
+/// Difficulty rungs for reading a dial.
+///
+/// The minute hand only ever points at 12, 3, 6 or 9 — the four positions a
+/// child can name by looking rather than by counting round the face. Reading
+/// to the minute is a later skill and a different one, and putting it on the
+/// same ladder would mean the top of the ladder is where the pack stops being
+/// usable.
 enum ClockTier: Int, CaseIterable, Codable, Sendable, Comparable {
     /// The long hand on twelve. Only the short hand carries information.
     case oClock = 1
@@ -9,10 +15,6 @@ enum ClockTier: Int, CaseIterable, Codable, Sendable, Comparable {
     /// Adds fifteen and forty-five — the long hand on the 3 and the 9, which is
     /// the first time it points somewhere that is not straight up or down.
     case quarters
-    /// Every five minutes, read off the numerals as fives.
-    case fiveMinutes
-    /// Any minute at all, which needs the small ticks.
-    case anyMinute
 
     static func < (lhs: ClockTier, rhs: ClockTier) -> Bool { lhs.rawValue < rhs.rawValue }
 
@@ -22,8 +24,6 @@ enum ClockTier: Int, CaseIterable, Codable, Sendable, Comparable {
         case .oClock: [0]
         case .thirty: [0, 30]
         case .quarters: [0, 15, 30, 45]
-        case .fiveMinutes: Array(stride(from: 0, to: 60, by: 5))
-        case .anyMinute: Array(0 ..< 60)
         }
     }
 
@@ -33,8 +33,6 @@ enum ClockTier: Int, CaseIterable, Codable, Sendable, Comparable {
         case .oClock: "O'clock"
         case .thirty: "Thirty"
         case .quarters: "Fifteen and forty-five"
-        case .fiveMinutes: "Every five minutes"
-        case .anyMinute: "Any minute"
         }
     }
 }

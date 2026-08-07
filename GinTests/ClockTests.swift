@@ -109,12 +109,17 @@ struct ClockPuzzleBuilderTests {
         }
     }
 
-    @Test("The ladder follows how clocks are taught")
+    /// The minute hand never points anywhere but 12, 3, 6 or 9.
+    @Test("The ladder stops at the quarter hours")
     func ladderIsOrdered() {
-        #expect(ClockTier.allCases.map(\.minutes.count) == [1, 2, 4, 12, 60])
+        #expect(ClockTier.allCases.map(\.minutes.count) == [1, 2, 4])
         #expect(ClockTier.oClock.minutes == [0])
         #expect(ClockTier.thirty.minutes == [0, 30])
         #expect(ClockTier.quarters.minutes == [0, 15, 30, 45])
+        #expect(ClockTier.allCases.last == .quarters)
+        // No rung may introduce a minute off the quarters.
+        let every = Set(ClockTier.allCases.flatMap(\.minutes))
+        #expect(every == [0, 15, 30, 45])
     }
 
     @Test("The answer is offered, and the choices are distinct")
@@ -194,9 +199,9 @@ struct ClockPuzzleBuilderTests {
         var seen: Set<ClockTier> = []
         for seed in UInt64(1) ... 400 {
             var generator = SeededGenerator(seed: seed)
-            seen.insert(ClockPuzzleBuilder.puzzle(upTo: .anyMinute, using: &generator).tier)
+            seen.insert(ClockPuzzleBuilder.puzzle(upTo: .quarters, using: &generator).tier)
         }
-        #expect(seen.contains(.anyMinute))
+        #expect(seen.contains(.quarters))
         #expect(seen.contains(.oClock))
     }
 }

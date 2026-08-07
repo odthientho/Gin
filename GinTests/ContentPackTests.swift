@@ -56,10 +56,17 @@ struct ContentPackTests {
 
     @Test("A pack holds enough items for its hardest level")
     func packsHaveEnoughItems() throws {
+        // Mechanics that build their own content. Their `items` are the rung
+        // stickers a child collects, not the choices a question is made from, so
+        // counting them against `choiceCount` measures the wrong thing — Clock
+        // offers four times built from three stickers.
+        let generated: Set<Mechanic> = [.logic, .clockRead, .clockFind]
+
         // A level asks for a pool; a pack that can't fill it silently shows the
         // child a smaller set than intended.
         for id in ContentLoader.packIdentifiers {
             let pack = try loadPack(id)
+            guard !pack.mechanics.allSatisfy({ generated.contains($0) }) else { continue }
             let params = LevelParams.params(for: pack.minLevel)
             #expect(pack.items.count >= params.choiceCount,
                     "Pack '\(id)' has fewer items than its level offers choices")

@@ -4,12 +4,46 @@
   "color": "sun",
   "icon": "🕐",
   "minLevel": 3,
-  "mechanics": ["clockRead", "clockFind"],
+  "mechanics": [
+    "clockRead",
+    "clockFind"
+  ],
   "items": [
-    { "id": "clock_tier1", "name": "O'Clock",     "art": { "kind": "geometry", "value": "circle" },   "voiceClip": "clock_tier1", "tags": ["rung"] },
-    { "id": "clock_tier2", "name": "Half Past",   "art": { "kind": "geometry", "value": "square" },   "voiceClip": "clock_tier2", "tags": ["rung"] },
-    { "id": "clock_tier3", "name": "Quarters",    "art": { "kind": "geometry", "value": "triangle" }, "voiceClip": "clock_tier3", "tags": ["rung"] },
-    { "id": "clock_tier4", "name": "Five Past",   "art": { "kind": "geometry", "value": "diamond" },  "voiceClip": "clock_tier4", "tags": ["rung"] },
-    { "id": "clock_tier5", "name": "Clock Master","art": { "kind": "geometry", "value": "star" },     "voiceClip": "clock_tier5", "tags": ["rung"] }
+    {
+      "id": "clock_tier1",
+      "name": "O'Clock",
+      "art": {
+        "kind": "geometry",
+        "value": "circle"
+      },
+      "voiceClip": "clock_tier1",
+      "tags": [
+        "rung"
+      ]
+    },
+    {
+      "id": "clock_tier2",
+      "name": "Thirty",
+      "art": {
+        "kind": "geometry",
+        "value": "square"
+      },
+      "voiceClip": "clock_tier2",
+      "tags": [
+        "rung"
+      ]
+    },
+    {
+      "id": "clock_tier3",
+      "name": "Clock Master",
+      "art": {
+        "kind": "geometry",
+        "value": "star"
+      },
+      "voiceClip": "clock_tier3",
+      "tags": [
+        "rung"
+      ]
+    }
   ]
 }

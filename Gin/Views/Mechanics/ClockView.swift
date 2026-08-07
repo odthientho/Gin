@@ -8,8 +8,8 @@ import SwiftUI
 /// gives the pack something to rotate between.
 ///
 /// Rungs widen the minute hand's reach — on the hour, then :30, then :15 and
-/// :45, then every five minutes, then any minute — and unlock after four
-/// correct in a row.
+/// :45 — and unlock after four correct in a row. It never points anywhere
+/// else, so the hand is always on a numeral a child can name.
 struct ClockView: View {
     enum Direction {
         /// See the dial, pick the words.
@@ -97,8 +97,7 @@ struct ClockView: View {
             ClockFaceView(
                 time: puzzle.answer,
                 size: min(geometry.size.height, geometry.size.width) * 0.94,
-                accent: pack.color.color,
-                showsMinuteTicks: puzzle.tier == .anyMinute
+                accent: pack.color.color
             )
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
@@ -146,8 +145,7 @@ struct ClockView: View {
                     ClockFaceView(
                         time: time,
                         size: side,
-                        accent: pack.color.color,
-                        showsMinuteTicks: puzzle.tier == .anyMinute
+                        accent: pack.color.color
                     )
                     .opacity(chosen == time ? 0.4 : 1)
                     .modifier(Shake(animatableData: wrong == time ? shake : 0))

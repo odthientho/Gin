@@ -13,14 +13,10 @@ struct ClockFaceView: View {
     let time: ClockTime
     let size: CGFloat
     var accent: Color = Theme.Palette.berry
-    /// Minute ticks only matter once a child is reading to the minute, and they
-    /// make an o'clock face busier than it needs to be.
-    var showsMinuteTicks: Bool = false
 
     var body: some View {
         ZStack {
             dial
-            if showsMinuteTicks { minuteTicks }
             hourTicks
             numerals
             hand(
@@ -60,16 +56,6 @@ struct ClockFaceView: View {
                 .frame(width: size * 0.022, height: size * 0.055)
                 .offset(y: -size * 0.415)
                 .rotationEffect(.degrees(Double(index) * 30))
-        }
-    }
-
-    private var minuteTicks: some View {
-        ForEach(0 ..< 60, id: \.self) { index in
-            Capsule()
-                .fill(Theme.Palette.ink.opacity(index % 5 == 0 ? 0 : 0.28))
-                .frame(width: size * 0.010, height: size * 0.028)
-                .offset(y: -size * 0.428)
-                .rotationEffect(.degrees(Double(index) * 6))
         }
     }
 
