@@ -4,43 +4,57 @@ import Testing
 
 struct ClockTimeTests {
 
-    /// The phrasing table, spelled out. Past half past, English counts down to
-    /// the *next* hour — the thing children and clock apps most often get wrong.
-    @Test("Times are read the way they are taught")
+    /// The phrasing table. Hour then minutes, straight off the two hands —
+    /// no "half past", no "quarter to", and so no counting down to the next
+    /// hour, which is the idea that makes a spoken time stop matching the hand
+    /// a child is looking at.
+    @Test("Times are read hour-then-minutes")
     func spokenFormsAreCorrect() {
         let cases: [(Int, Int, String)] = [
             (3, 0,  "three o'clock"),
             (12, 0, "twelve o'clock"),
-            (3, 15, "quarter past three"),
-            (3, 30, "half past three"),
-            (3, 45, "quarter to four"),
-            (3, 5,  "five past three"),
-            (3, 10, "ten past three"),
-            (3, 20, "twenty past three"),
-            (3, 25, "twenty-five past three"),
-            (3, 35, "twenty-five to four"),
-            (3, 40, "twenty to four"),
-            (3, 50, "ten to four"),
-            (3, 55, "five to four"),
-            (3, 1,  "one past three"),
-            (3, 59, "one to four"),
+            (8, 15, "eight fifteen"),
+            (8, 30, "eight thirty"),
+            (8, 45, "eight forty-five"),
+            (8, 5,  "eight oh five"),
+            (8, 9,  "eight oh nine"),
+            (8, 10, "eight ten"),
+            (3, 20, "three twenty"),
+            (3, 25, "three twenty-five"),
+            (3, 35, "three thirty-five"),
+            (3, 50, "three fifty"),
+            (3, 59, "three fifty-nine"),
+            (3, 1,  "three oh one"),
+            // The hour never advances past the half hour any more.
+            (12, 45, "twelve forty-five"),
+            (11, 50, "eleven fifty"),
         ]
         for (hour, minute, expected) in cases {
-            #expect(ClockTime(hour: hour, minute: minute).spoken == expected,
-                    "\(hour):\(minute) read as '\(ClockTime(hour: hour, minute: minute).spoken)'")
+            let actual = ClockTime(hour: hour, minute: minute).spoken
+            #expect(actual == expected, "\(hour):\(minute) read as '\(actual)'")
         }
     }
 
     /// The wrap is the trap: twelve, not zero or thirteen.
     @Test("The hour wraps to twelve, not zero")
     func hourWraps() {
-        #expect(ClockTime(hour: 12, minute: 45).spoken == "quarter to one")
-        #expect(ClockTime(hour: 12, minute: 45).spokenHour == 1)
-        #expect(ClockTime(hour: 11, minute: 50).spoken == "ten to twelve")
-        // Out-of-range input is normalised rather than trusted.
         #expect(ClockTime(hour: 13, minute: 0).hour == 1)
         #expect(ClockTime(hour: 0, minute: 0).hour == 12)
         #expect(ClockTime(hour: 3, minute: 60).minute == 0)
+        #expect(ClockTime(hour: 25, minute: 0).spoken == "one o'clock")
+    }
+
+    /// Reading straight off the hands means the spoken hour is always the hour
+    /// the short hand is nearest — the property that made "quarter to" hard.
+    @Test("The spoken hour always matches the dial")
+    func spokenHourMatchesTheHand() {
+        for hour in 1 ... 12 {
+            for minute in 0 ..< 60 {
+                let time = ClockTime(hour: hour, minute: minute)
+                #expect(time.spoken.hasPrefix(ClockTime.word(hour)),
+                        "\(time.digital) said '\(time.spoken)'")
+            }
+        }
     }
 
     @Test("Digital form is zero-padded")
@@ -51,14 +65,14 @@ struct ClockTimeTests {
     }
 
     /// A clock that parks the hour hand on the numeral teaches a dial that does
-    /// not exist — and makes half past three look identical to three o'clock.
+    /// not exist — and makes three thirty look identical to three o'clock.
     @Test("The hour hand advances within the hour")
     func hourHandCreeps() {
         #expect(ClockTime(hour: 3, minute: 0).hourAngle == 90)
         #expect(ClockTime(hour: 3, minute: 30).hourAngle == 105)
         #expect(ClockTime(hour: 3, minute: 59).hourAngle > 104)
         #expect(ClockTime(hour: 12, minute: 0).hourAngle == 0)
-        // Half past three must not look like three.
+        // Three thirty must not look like three o'clock.
         #expect(ClockTime(hour: 3, minute: 30).hourAngle != ClockTime(hour: 3, minute: 0).hourAngle)
     }
 
@@ -99,7 +113,7 @@ struct ClockPuzzleBuilderTests {
     func ladderIsOrdered() {
         #expect(ClockTier.allCases.map(\.minutes.count) == [1, 2, 4, 12, 60])
         #expect(ClockTier.oClock.minutes == [0])
-        #expect(ClockTier.halfPast.minutes == [0, 30])
+        #expect(ClockTier.thirty.minutes == [0, 30])
         #expect(ClockTier.quarters.minutes == [0, 15, 30, 45])
     }
 

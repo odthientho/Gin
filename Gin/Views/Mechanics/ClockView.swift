@@ -7,8 +7,9 @@ import SwiftUI
 /// is nearly free and the two feel quite different to a child, which is what
 /// gives the pack something to rotate between.
 ///
-/// Rungs follow how clocks are actually taught — o'clock, half past, quarters,
-/// five minutes, any minute — and unlock after four correct in a row.
+/// Rungs widen the minute hand's reach — on the hour, then :30, then :15 and
+/// :45, then every five minutes, then any minute — and unlock after four
+/// correct in a row.
 struct ClockView: View {
     enum Direction {
         /// See the dial, pick the words.
@@ -192,8 +193,8 @@ struct ClockView: View {
         isAdvancing = true
         Haptics.success()
         withAnimation(Motion.pop) { chosen = time }
-        // Always say the answer back, in both directions — hearing "quarter to
-        // four" while looking at the dial is most of the teaching.
+        // Always say the answer back, in both directions — hearing "three
+        // forty-five" while looking at the dial is most of the teaching.
         audio.say(puzzle.answer.spoken)
 
         streak += 1

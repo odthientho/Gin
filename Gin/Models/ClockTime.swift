@@ -15,27 +15,26 @@ struct ClockTime: Equatable, Hashable, Sendable {
         self.minute = ((minute % 60) + 60) % 60
     }
 
-    /// The hour that gets *said*, which is not always the hour the short hand
-    /// is nearest.
+    /// How the time is read aloud: the hour, then the minutes.
     ///
-    /// Past half past, English counts down to the next hour: 3:45 is "quarter to
-    /// four", not "quarter to three". This is the single thing children — and
-    /// clock apps — most often get wrong, so it lives in one place.
-    var spokenHour: Int {
-        minute > 30 ? (hour % 12) + 1 : hour
-    }
-
-    /// How the time is read aloud.
+    /// Deliberately *not* "half past" or "quarter to". Those forms carry two
+    /// extra ideas a child has to learn before they can say a time at all —
+    /// that fifteen minutes is a "quarter", and that past the half hour English
+    /// counts *down* to the next hour, so 3:45 becomes "quarter to four" and the
+    /// spoken hour stops matching the hand they are looking at. Reading the two
+    /// hands straight off, in the order they appear, is one idea instead of
+    /// three, and it is what every digital clock in the house already says.
+    ///
+    /// Minutes one to nine take "oh", as in "eight oh five" — the natural
+    /// spoken form, and it keeps single digits from sounding like the hour.
     var spoken: String {
         switch minute {
-        case 0:  "\(Self.word(hour)) o'clock"
-        case 15: "quarter past \(Self.word(hour))"
-        case 30: "half past \(Self.word(hour))"
-        case 45: "quarter to \(Self.word(spokenHour))"
-        case let m where m < 30:
-            "\(Self.word(m)) past \(Self.word(hour))"
+        case 0:
+            "\(Self.word(hour)) o'clock"
+        case 1 ... 9:
+            "\(Self.word(hour)) oh \(Self.word(minute))"
         default:
-            "\(Self.word(60 - minute)) to \(Self.word(spokenHour))"
+            "\(Self.word(hour)) \(Self.word(minute))"
         }
     }
 
@@ -51,10 +50,10 @@ struct ClockTime: Equatable, Hashable, Sendable {
 
     /// Degrees clockwise from twelve for the hour hand.
     ///
-    /// Advances *within* the hour: at half past three the short hand sits
-    /// midway between three and four, not on the three. A clock that parks the
-    /// hour hand on the numeral teaches a child to read a clock that does not
-    /// exist, and makes "half past three" look like "three".
+    /// Advances *within* the hour: at three thirty the short hand sits midway
+    /// between three and four, not on the three. A clock that parks the hour
+    /// hand on the numeral teaches a child to read a clock that does not
+    /// exist, and makes three thirty look identical to three o'clock.
     var hourAngle: Double {
         (Double(hour % 12) + Double(minute) / 60) * 30
     }

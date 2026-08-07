@@ -5,9 +5,9 @@ enum ClockTier: Int, CaseIterable, Codable, Sendable, Comparable {
     /// The long hand on twelve. Only the short hand carries information.
     case oClock = 1
     /// Adds the long hand on six — the first time it means anything.
-    case halfPast
-    /// Adds quarter past and quarter to, which is where "to" appears and the
-    /// spoken hour stops matching the short hand.
+    case thirty
+    /// Adds fifteen and forty-five — the long hand on the 3 and the 9, which is
+    /// the first time it points somewhere that is not straight up or down.
     case quarters
     /// Every five minutes, read off the numerals as fives.
     case fiveMinutes
@@ -20,7 +20,7 @@ enum ClockTier: Int, CaseIterable, Codable, Sendable, Comparable {
     var minutes: [Int] {
         switch self {
         case .oClock: [0]
-        case .halfPast: [0, 30]
+        case .thirty: [0, 30]
         case .quarters: [0, 15, 30, 45]
         case .fiveMinutes: Array(stride(from: 0, to: 60, by: 5))
         case .anyMinute: Array(0 ..< 60)
@@ -31,8 +31,8 @@ enum ClockTier: Int, CaseIterable, Codable, Sendable, Comparable {
     var parentFacingName: String {
         switch self {
         case .oClock: "O'clock"
-        case .halfPast: "Half past"
-        case .quarters: "Quarter past and to"
+        case .thirty: "Thirty"
+        case .quarters: "Fifteen and forty-five"
         case .fiveMinutes: "Every five minutes"
         case .anyMinute: "Any minute"
         }
@@ -58,7 +58,7 @@ struct ClockPuzzle: Identifiable, Equatable {
 ///
 /// - the two hands swapped, which is the classic beginner error
 /// - the neighbouring hour, for a short hand read to the wrong side
-/// - the same hands read as "past" when they mean "to"
+/// - a different minute value from the same rung, hour unchanged
 ///
 /// Those are the mistakes children actually make, so getting it right means
 /// having actually read the clock.
@@ -118,8 +118,8 @@ enum ClockPuzzleBuilder {
         }
 
         // The neighbouring hour, same minutes — a short hand read to the wrong
-        // side of the numeral. This is the "quarter to four looks like three"
-        // mistake made concrete.
+        // side of the numeral: a long hand near the 9 drags the eye to the
+        // previous hour, so 3:45 gets read as 4:45 or the other way about.
         for offset in [1, -1].shuffled(using: &generator) {
             add(ClockTime(hour: answer.hour + offset, minute: answer.minute))
         }
