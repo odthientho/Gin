@@ -245,19 +245,19 @@ struct LogicProgressTests {
 
     @Test("A fresh child starts on the easiest rung")
     func startsAtRungOne() {
-        #expect(makeStore().logicTier(for: "logic") == 1)
+        #expect(makeStore().tier(for: "logic") == 1)
     }
 
     @Test("Rungs never lock again")
     func tiersOnlyRise() {
         let store = makeStore()
-        store.setLogicTier(4, for: "logic")
-        #expect(store.logicTier(for: "logic") == 4)
+        store.setTier(4, for: "logic")
+        #expect(store.tier(for: "logic") == 4)
 
         // A bad run must not demote — that would be the sharpest fail state in
         // an app that deliberately has none.
-        store.setLogicTier(2, for: "logic")
-        #expect(store.logicTier(for: "logic") == 4)
+        store.setTier(2, for: "logic")
+        #expect(store.tier(for: "logic") == 4)
     }
 
     @Test("The rung persists, and older progress files still load")
@@ -269,10 +269,10 @@ struct LogicProgressTests {
 
         let store = ProgressStore(fileURL: url)
         #expect(store.earnedStickerIDs == ["cow"], "a pre-Logic file was wiped")
-        #expect(store.logicTier(for: "logic") == 1)
+        #expect(store.tier(for: "logic") == 1)
 
-        store.setLogicTier(5, for: "logic")
-        #expect(ProgressStore(fileURL: url).logicTier(for: "logic") == 5)
+        store.setTier(5, for: "logic")
+        #expect(ProgressStore(fileURL: url).tier(for: "logic") == 5)
     }
 }
 

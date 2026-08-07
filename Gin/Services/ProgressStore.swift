@@ -119,16 +119,23 @@ final class ProgressStore {
         save()
     }
 
+    /// The difficulty rung a child has reached in a pack that has a ladder.
+    ///
     /// Defaults to the first rung rather than zero, so a fresh child starts at
     /// the easiest puzzle rather than an invalid one.
-    func logicTier(for packID: String) -> Int {
+    ///
+    /// The stored key is still `logicTiers` — Logic was the first pack with a
+    /// ladder and Clock now shares the mechanism. Renaming the key would read as
+    /// tidier and would silently reset every child's Logic progress on upgrade,
+    /// which is not a trade worth making for a nicer name.
+    func tier(for packID: String) -> Int {
         max(1, logicTiers[packID] ?? 1)
     }
 
     /// Only ever raises. A rung, once reached, stays reached — there are no fail
     /// states in this app, and demoting a child would be the sharpest one.
-    func setLogicTier(_ tier: Int, for packID: String) {
-        guard tier > logicTier(for: packID) else { return }
+    func setTier(_ tier: Int, for packID: String) {
+        guard tier > self.tier(for: packID) else { return }
         logicTiers[packID] = tier
         save()
     }

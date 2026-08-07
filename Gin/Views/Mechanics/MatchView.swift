@@ -157,7 +157,6 @@ struct MatchView: View {
             withAnimation(Motion.settle) { isPreviewing = false }
         }
     }
-
     private func select(_ card: Card) {
         guard !isResolving,
               !isPreviewing || !params.matchHidesCards,

@@ -17,6 +17,8 @@ enum Mechanic: String, Codable, Sendable, CaseIterable {
     case trace         // handwriting: follow the dashed glyph with a Pencil
     case flashcard     // learn-first deck: big picture, tap to flip and hear it
     case logic         // non-verbal reasoning: odd one out, then matrices
+    case clockRead     // see the dial, pick the time
+    case clockFind     // hear the time, pick the dial
 }
 
 /// How an item is drawn.

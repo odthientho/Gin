@@ -31,7 +31,7 @@ struct LogicView: View {
     @State private var isAdvancing = false
 
     private var ceiling: LogicTier {
-        LogicTier(rawValue: progress.logicTier(for: pack.id)) ?? .oddOneOutIdentical
+        LogicTier(rawValue: progress.tier(for: pack.id)) ?? .oddOneOutIdentical
     }
 
     var body: some View {
@@ -235,7 +235,7 @@ struct LogicView: View {
               let next = LogicTier(rawValue: ceiling.rawValue + 1)
         else { return }
         streak = 0
-        progress.setLogicTier(next.rawValue, for: pack.id)
+        progress.setTier(next.rawValue, for: pack.id)
     }
 
     /// Stickers are pack items, so each rung has one — reaching a harder rung is
