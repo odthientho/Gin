@@ -1,0 +1,15 @@
+{
+  "id": "comparison",
+  "title": "Compare",
+  "color": "teal",
+  "icon": "⚖️",
+  "minLevel": 2,
+  "mechanics": ["comparison"],
+  "items": [
+    { "id": "compare_tier1", "name": "Bigger",     "art": { "kind": "geometry", "value": "circle" },   "voiceClip": "compare_tier1", "tags": ["rung"] },
+    { "id": "compare_tier2", "name": "The Same",   "art": { "kind": "geometry", "value": "square" },   "voiceClip": "compare_tier2", "tags": ["rung"] },
+    { "id": "compare_tier3", "name": "Close Call", "art": { "kind": "geometry", "value": "triangle" }, "voiceClip": "compare_tier3", "tags": ["rung"] },
+    { "id": "compare_tier4", "name": "Biggest",    "art": { "kind": "geometry", "value": "diamond" },  "voiceClip": "compare_tier4", "tags": ["rung"] },
+    { "id": "compare_tier5", "name": "In Order",   "art": { "kind": "geometry", "value": "star" },     "voiceClip": "compare_tier5", "tags": ["rung"] }
+  ]
+}

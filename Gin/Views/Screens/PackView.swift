@@ -22,7 +22,7 @@ struct PackView: View {
     /// an empty screen.
     private static let implemented: [Mechanic] = [
         .discover, .findIt, .match, .dropIn, .count, .hearIt, .addTakeAway, .pattern,
-        .trace, .flashcard, .logic, .clockRead, .clockFind
+        .trace, .flashcard, .logic, .clockRead, .clockFind, .comparison
     ]
 
     private var available: [Mechanic] {
@@ -94,6 +94,8 @@ struct PackView: View {
             FlashcardView(pack: pack, params: params)
         case .logic:
             LogicView(pack: pack, params: params, onRoundComplete: award)
+        case .comparison:
+            ComparisonView(pack: pack, params: params, onRoundComplete: award)
         case .clockRead:
             ClockView(pack: pack, params: params, direction: .readClock,
                       onRoundComplete: award)

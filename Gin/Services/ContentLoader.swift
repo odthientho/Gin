@@ -42,7 +42,8 @@ enum ContentLoader {
         "patterns",
         "writing",
         "logic",
-        "clock"
+        "clock",
+        "comparison"
     ]
 
     /// Decodes every pack. Throws rather than skipping a bad file — a content

@@ -60,7 +60,7 @@ struct ContentPackTests {
         // stickers a child collects, not the choices a question is made from, so
         // counting them against `choiceCount` measures the wrong thing — Clock
         // offers four times built from three stickers.
-        let generated: Set<Mechanic> = [.logic, .clockRead, .clockFind]
+        let generated: Set<Mechanic> = [.logic, .clockRead, .clockFind, .comparison]
 
         // A level asks for a pool; a pack that can't fill it silently shows the
         // child a smaller set than intended.

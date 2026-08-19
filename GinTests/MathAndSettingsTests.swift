@@ -346,7 +346,7 @@ struct FlagContentTests {
             .addTakeAway, .pattern, .trace, .flashcard
         ]
         // Writing is one long tracing deck; Patterns is a single sequencing game.
-        let knownSingletons: Set<String> = ["writing", "patterns"]
+        let knownSingletons: Set<String> = ["writing", "patterns", "logic", "comparison"]
 
         for pack in try ContentLoader.loadAll(from: .main) {
             // Flashcards are study, not a game, so they cannot be the handoff.
