@@ -38,9 +38,16 @@ struct LogicView: View {
         VStack(spacing: Theme.Metrics.minGap) {
             promptBar
             if let puzzle {
-                grid(puzzle)
-                if !puzzle.isOddOneOut {
-                    choiceRow(puzzle)
+                GeometryReader { geometry in
+                    let layout = layout(for: puzzle, in: geometry.size)
+
+                    VStack(spacing: Theme.Metrics.minGap) {
+                        grid(puzzle, cell: layout.gridCell, figure: layout.figure)
+                        if !puzzle.isOddOneOut {
+                            choiceRow(puzzle, height: layout.choiceHeight, figure: layout.figure)
+                        }
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             }
         }
@@ -76,32 +83,77 @@ struct LogicView: View {
         .accessibilityLabel("Hear the question again")
     }
 
+    // MARK: - Layout
+
+    /// Grid cell, choice-row height, and the one figure size used by both.
+    ///
+    /// `size` is one of the four attributes a rule can vary, so a figure has to
+    /// draw at the same number of points wherever it appears. Sizing the grid
+    /// from the available space while the choices used a fixed height meant a
+    /// "large" answer could render smaller than a "medium" in the grid — which
+    /// silently breaks every size rule the generator can produce.
+    private func layout(
+        for puzzle: LogicPuzzle,
+        in size: CGSize
+    ) -> (gridCell: CGFloat, choiceHeight: CGFloat, figure: CGFloat) {
+        let spacing: CGFloat = 14
+
+        // The choice row is allocated first so the grid cannot squeeze it below
+        // a touchable height, and so the figure size stops depending on it.
+        //
+        // It takes a generous share on purpose. Because both places draw at the
+        // same size, the *shorter* container caps how big a figure can ever be —
+        // so a cramped choice row does not just make the choices small, it makes
+        // the grid figures small too and leaves the tiles looking half empty.
+        let choiceHeight = puzzle.isOddOneOut
+            ? 0
+            : max(Theme.Metrics.minTouchTarget, size.height * 0.30)
+        let gridHeight = size.height - (puzzle.isOddOneOut ? 0 : choiceHeight + spacing)
+
+        let gridCell = max(0, min(
+            (size.width - spacing * CGFloat(puzzle.columns - 1)) / CGFloat(puzzle.columns),
+            (gridHeight - spacing * CGFloat(puzzle.rows - 1)) / CGFloat(puzzle.rows)
+        ))
+
+        // Bounded by whichever container is tighter. A figure drawn larger than
+        // its choice tile would overflow; drawn smaller in one place than the
+        // other would lie about its size.
+        let figure = puzzle.isOddOneOut
+            ? gridCell * 0.82
+            : min(gridCell * 0.82, choiceHeight * 0.78)
+
+        return (gridCell, choiceHeight, figure)
+    }
+
     // MARK: - Grid
 
-    private func grid(_ puzzle: LogicPuzzle) -> some View {
-        GeometryReader { geometry in
-            // Square cells sized to whichever of the two axes runs out first.
-            let spacing: CGFloat = 14
-            let cell = min(
-                (geometry.size.width - spacing * CGFloat(puzzle.columns - 1)) / CGFloat(puzzle.columns),
-                (geometry.size.height - spacing * CGFloat(puzzle.rows - 1)) / CGFloat(puzzle.rows)
-            )
+    private func grid(_ puzzle: LogicPuzzle, cell: CGFloat, figure: CGFloat) -> some View {
+        let spacing: CGFloat = 14
 
-            VStack(spacing: spacing) {
-                ForEach(0 ..< puzzle.rows, id: \.self) { row in
-                    HStack(spacing: spacing) {
-                        ForEach(0 ..< puzzle.columns, id: \.self) { column in
-                            cellView(puzzle, index: row * puzzle.columns + column, cell: cell)
-                        }
+        return VStack(spacing: spacing) {
+            ForEach(0 ..< puzzle.rows, id: \.self) { row in
+                HStack(spacing: spacing) {
+                    ForEach(0 ..< puzzle.columns, id: \.self) { column in
+                        cellView(
+                            puzzle,
+                            index: row * puzzle.columns + column,
+                            cell: cell,
+                            figure: figure
+                        )
                     }
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     @ViewBuilder
-    private func cellView(_ puzzle: LogicPuzzle, index: Int, cell: CGFloat) -> some View {
+    private func cellView(
+        _ puzzle: LogicPuzzle,
+        index: Int,
+        cell: CGFloat,
+        figure figureSize: CGFloat
+    ) -> some View {
         let figure = puzzle.cells[index]
 
         ZStack {
@@ -110,7 +162,7 @@ struct LogicView: View {
                 .shadow(color: Theme.Shadow.color, radius: 8, y: 3)
 
             if let figure {
-                FigureView(figure: figure, cell: cell * 0.82)
+                FigureView(figure: figure, cell: figureSize)
             } else {
                 // The hole. Dashed and empty so it reads as somewhere a thing
                 // goes, which is the whole question.
@@ -119,7 +171,7 @@ struct LogicView: View {
                     .foregroundStyle(pack.color.color.opacity(0.55))
 
                 if let chosen {
-                    FigureView(figure: chosen, cell: cell * 0.82)
+                    FigureView(figure: chosen, cell: figureSize)
                         .transition(.scale.combined(with: .opacity))
                 } else {
                     Text("?")
@@ -144,16 +196,20 @@ struct LogicView: View {
 
     // MARK: - Choices
 
-    private func choiceRow(_ puzzle: LogicPuzzle) -> some View {
+    private func choiceRow(
+        _ puzzle: LogicPuzzle,
+        height: CGFloat,
+        figure figureSize: CGFloat
+    ) -> some View {
         HStack(spacing: Theme.Metrics.minGap) {
             ForEach(Array(puzzle.choices.enumerated()), id: \.offset) { _, figure in
                 ZStack {
                     RoundedRectangle(cornerRadius: Theme.Metrics.tileCorner, style: .continuous)
                         .fill(pack.color.color.opacity(0.16))
-                    FigureView(figure: figure, cell: Theme.Metrics.minTouchTarget * 0.78)
+                    FigureView(figure: figure, cell: figureSize)
                 }
                 .frame(maxWidth: .infinity)
-                .frame(height: Theme.Metrics.minTouchTarget)
+                .frame(height: height)
                 .overlay {
                     RoundedRectangle(cornerRadius: Theme.Metrics.tileCorner, style: .continuous)
                         .strokeBorder(pack.color.color.opacity(0.35), lineWidth: 3)
@@ -164,7 +220,7 @@ struct LogicView: View {
                 .accessibilityLabel(figure.spokenDescription)
             }
         }
-        .frame(height: Theme.Metrics.minTouchTarget)
+        .frame(height: height)
     }
 
     private var correctBadge: some View {
