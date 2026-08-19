@@ -24,6 +24,11 @@ struct PatternsView: View {
     @State private var solved = 0
     @State private var isAdvancing = false
 
+    /// Every pattern token draws at this size, wherever it appears. The
+    /// sequence and the choices showing the same token at different sizes
+    /// made them look like different tokens.
+    private let tokenSize: CGFloat = 74
+
     private var pool: [Item] { pack.items(for: params) }
 
     var body: some View {
@@ -68,7 +73,7 @@ struct PatternsView: View {
     private func sequenceRow(_ task: PatternTask) -> some View {
         HStack(spacing: 16) {
             ForEach(Array(task.sequence.enumerated()), id: \.offset) { _, item in
-                ItemArtView(item: item, size: 74)
+                ItemArtView(item: item, size: tokenSize)
                     .frame(width: 116, height: 116)
                     .background(Theme.Palette.surface, in: Circle())
                     .shadow(color: Theme.Shadow.color, radius: 6, y: 3)
@@ -86,7 +91,7 @@ struct PatternsView: View {
                     .foregroundStyle(pack.color.color.opacity(0.6))
 
                 if let chosenID, let chosen = task.choices.first(where: { $0.id == chosenID }) {
-                    ItemArtView(item: chosen, size: 74)
+                    ItemArtView(item: chosen, size: tokenSize)
                         .transition(.scale.combined(with: .opacity))
                 } else {
                     Text("?")
@@ -110,7 +115,7 @@ struct PatternsView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: Theme.Metrics.tileCorner, style: .continuous)
                         .fill(pack.color.color)
-                    ItemArtView(item: item, size: 84)
+                    ItemArtView(item: item, size: tokenSize)
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: 168)

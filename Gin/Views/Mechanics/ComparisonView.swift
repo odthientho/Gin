@@ -37,10 +37,22 @@ struct ComparisonView: View {
         VStack(spacing: Theme.Metrics.minGap) {
             promptBar
             if let puzzle {
-                if let reference = puzzle.reference {
-                    referenceRow(reference)
+                GeometryReader { geometry in
+                    // One cell size for every figure on screen, the reference
+                    // included. Sizing the two rows separately is exactly how
+                    // "which is the same size?" became unanswerable: two figures
+                    // with an identical scale drew at different sizes because
+                    // their cells differed, so nothing on screen matched.
+                    let cell = figureCell(for: puzzle, in: geometry.size)
+
+                    VStack(spacing: Theme.Metrics.minGap) {
+                        if let reference = puzzle.reference {
+                            referenceTile(reference, cell: cell)
+                        }
+                        figureRow(puzzle, cell: cell)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
-                figureRow(puzzle)
             }
         }
         .padding(.horizontal, Theme.Metrics.screenPadding)
@@ -75,37 +87,49 @@ struct ComparisonView: View {
         .accessibilityLabel("Hear the question again")
     }
 
-    /// The figure to match against, set apart so it does not read as a choice.
-    private func referenceRow(_ figure: ComparisonFigure) -> some View {
-        ComparisonFigureView(figure: figure, cell: 150)
-            .frame(height: 160)
-            .frame(maxWidth: .infinity)
+    /// The largest square that fits every figure, reference row included.
+    private func figureCell(for puzzle: ComparisonPuzzle, in size: CGSize) -> CGFloat {
+        let spacing = Theme.Metrics.minGap
+        let columns = CGFloat(max(1, puzzle.figures.count))
+        let rows: CGFloat = puzzle.reference == nil ? 1 : 2
+        return max(0, min(
+            (size.width - spacing * (columns - 1)) / columns,
+            (size.height - spacing * (rows - 1)) / rows
+        ))
+    }
+
+    /// The figure to match against.
+    ///
+    /// Marked out by its dashed border and its own row, never by being drawn at
+    /// a different size — size is the answer here, so the reference has to be
+    /// measured against the candidates on exactly the same scale.
+    private func referenceTile(_ figure: ComparisonFigure, cell: CGFloat) -> some View {
+        ComparisonFigureView(figure: figure, cell: cell * 0.84)
+            .frame(width: cell, height: cell)
             .background {
-                RoundedRectangle(cornerRadius: Theme.Metrics.cardCorner, style: .continuous)
-                    .fill(Theme.Palette.surface)
-                    .shadow(color: Theme.Shadow.color, radius: 10, y: 4)
+                RoundedRectangle(cornerRadius: Theme.Metrics.tileCorner, style: .continuous)
+                    .fill(pack.color.color.opacity(0.12))
             }
+            .overlay {
+                RoundedRectangle(cornerRadius: Theme.Metrics.tileCorner, style: .continuous)
+                    .strokeBorder(
+                        pack.color.color.opacity(0.7),
+                        style: StrokeStyle(lineWidth: 5, dash: [14, 10])
+                    )
+            }
+            .frame(maxWidth: .infinity)
             .accessibilityLabel("Match this one")
     }
 
     // MARK: - Figures
 
-    private func figureRow(_ puzzle: ComparisonPuzzle) -> some View {
-        GeometryReader { geometry in
-            let spacing = Theme.Metrics.minGap
-            let count = CGFloat(puzzle.figures.count)
-            let cell = min(
-                (geometry.size.width - spacing * (count - 1)) / count,
-                geometry.size.height
-            )
-
-            HStack(spacing: spacing) {
-                ForEach(puzzle.figures) { figure in
-                    tile(figure, in: puzzle, cell: cell)
-                }
+    private func figureRow(_ puzzle: ComparisonPuzzle, cell: CGFloat) -> some View {
+        HStack(spacing: Theme.Metrics.minGap) {
+            ForEach(puzzle.figures) { figure in
+                tile(figure, in: puzzle, cell: cell)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .frame(maxWidth: .infinity)
     }
 
     private func tile(
